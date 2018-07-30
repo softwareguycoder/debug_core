@@ -10,7 +10,6 @@
 
 #include "symbols.h"
 
-int char_to_long(const char* input, long* output);
 void flush_stdin();
 int get_line(const char *prmpt, char *buff, int size);
 int get_line_with_default(const char *prmpt, char *buff, const char *default_value, int size);
