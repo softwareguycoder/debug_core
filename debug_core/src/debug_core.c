@@ -65,9 +65,6 @@ void log_error(const char* message, ...) {
 }
 
 void log_debug(const char* message, ...) {
-#ifndef DEBUG
-	return;
-#endif
 
 	va_list args;
 	va_start(args, message);
