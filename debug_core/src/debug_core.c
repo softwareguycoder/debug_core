@@ -7,10 +7,7 @@
  *      Contains routines for debugging, such as logging etc.
  */
 
-#include <stdio.h>
-#include <string.h>
-#include <stdarg.h>
-
+#include "stdafx.h"
 #include "debug_core.h"
 
 void log_info(const char* message, ...) {
