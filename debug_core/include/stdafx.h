@@ -1,5 +1,5 @@
-#ifndef __STDAFX_H__
-#define __STDAFX_H__
+#ifndef __DEBUG_CORE_STDAFX_H__
+#define __DEBUG_CORE_STDAFX_H__
 
 #include <stdio.h>
 #include <string.h>
@@ -17,4 +17,4 @@
 typedef enum { FALSE, TRUE } BOOL;
 
 
-#endif //__STDAFX_H__
+#endif //__DEBUG_CORE_STDAFX_H__
