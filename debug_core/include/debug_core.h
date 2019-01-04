@@ -8,6 +8,11 @@
 #ifndef __DEBUG_H__
 #define __DEBUG_H__
 
+#define DEBUG_MESSAGE_PREFIX	"[   DEBUG   ]"
+#define ERROR_MESSAGE_PREFIX	"[   ERROR   ]"
+#define WARN_MESSAGE_PREFIX		"[   WARN    ]"
+#define INFO_MESSAGE_PREFIX     "[   INFO    ]"
+
 /**
  * @name log_info
  * @details Logs a formatted [INFO] message to standard output.

@@ -25,7 +25,7 @@ void log_info(const char* message, ...) {
 
 	vsprintf(buf, message, args);
 
-	printf("[INFO] %s\n", buf);
+	printf("%s %s\n", INFO_MESSAGE_PREFIX, buf);
 
 	va_end(args);
 }
@@ -42,7 +42,7 @@ void log_warning(const char* message, ...) {
 
 	vsprintf(buf, message, args);
 
-	printf("[WARN] %s\n", buf);
+	printf("%s %s\n", WARN_MESSAGE_PREFIX, buf);
 
 	va_end(args);
 }
@@ -59,7 +59,7 @@ void log_error(const char* message, ...) {
 
 	vsprintf(buf, message, args);
 
-	printf("ERROR: %s\n", buf);
+	printf("%s %s\n", ERROR_MESSAGE_PREFIX, buf);
 
 	va_end(args);
 }
@@ -77,7 +77,7 @@ void log_debug(const char* message, ...) {
 
 	vsprintf(buf, message, args);
 
-	printf("[DEBUG] %s\n", buf);
+	printf("%s %s\n", DEBUG_MESSAGE_PREFIX, buf);
 
 	va_end(args);
 }
