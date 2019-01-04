@@ -8,6 +8,12 @@
 #ifndef __DEBUG_H__
 #define __DEBUG_H__
 
+/**
+ * Turns this library's messages on or off.
+ * @param enabled TRUE to enable this library; FALSE to turn all messages off.
+ * @remarks This library is enabled by default.
+ */
+void toggle_debug(BOOL enabled);
 
 /**
  * @name log_info

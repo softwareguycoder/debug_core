@@ -10,7 +10,23 @@
 #include "stdafx.h"
 #include "debug_core.h"
 
+// Flag that turns this library on and off
+BOOL mute = FALSE;
+
+/**
+ * Turns this library's messages on or off.
+ * @param enabled TRUE to enable this library; FALSE to turn all messages off.
+ * @remarks This library is enabled by default.
+ */
+void toggle_debug(BOOL enabled)
+{
+	mute = !enabled;
+}
+
 void log_info(const char* message, ...) {
+	if (mute == TRUE)
+		return;
+
 	va_list args;
 	va_start(args, message);
 
@@ -28,6 +44,9 @@ void log_info(const char* message, ...) {
 }
 
 void log_warning(const char* message, ...) {
+	if (mute == TRUE)
+		return;
+
 	va_list args;
 	va_start(args, message);
 
@@ -45,6 +64,9 @@ void log_warning(const char* message, ...) {
 }
 
 void log_error(const char* message, ...) {
+	if (mute == TRUE)
+		return;
+
 	va_list args;
 	va_start(args, message);
 
@@ -62,6 +84,8 @@ void log_error(const char* message, ...) {
 }
 
 void log_debug(const char* message, ...) {
+	if (mute == TRUE)
+		return;
 
 	va_list args;
 	va_start(args, message);
