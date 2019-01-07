@@ -13,10 +13,22 @@
 #define WARN_MESSAGE_PREFIX		"[   WARN    ]"
 #define INFO_MESSAGE_PREFIX     "[   INFO    ]"
 
-// Exit codes
+/**
+ * Exit code to be returned from processes upon successful completion; operating system/standard
+ * library functions also (generally, as a rule) return this to indicate success.
+ */
 #define OK		0		// Code to return to the operating system to indicate successful program termination
+
+/**
+ * Exit code to be returned from processes when an error condition has arisen; some operating system/standard
+ * library functions also return this upon failure, although generally, as a rule, these functions return some
+ * other nonzero value.
+ */
 #define ERROR	-1		// Code to return to the operating system to indicate an error condition
 
+/**
+ * Data type to encode a one-or-zero, true-or-false value.
+ */
 typedef enum { FALSE, TRUE } BOOL;
 
 /**
