@@ -78,7 +78,8 @@ void log_error(const char* message, ...) {
 
 	vsprintf(buf, message, args);
 
-	printf("%s %s\n", ERROR_MESSAGE_PREFIX, buf);
+	/* Send errors to stderr */
+	fprintf(stderr, "%s %s\n", ERROR_MESSAGE_PREFIX, buf);
 
 	va_end(args);
 }
