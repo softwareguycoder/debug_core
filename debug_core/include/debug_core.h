@@ -8,6 +8,17 @@
 #ifndef __DEBUG_H__
 #define __DEBUG_H__
 
+#define DEBUG_MESSAGE_PREFIX	"[   DEBUG   ]"
+#define ERROR_MESSAGE_PREFIX	"[   ERROR   ]"
+#define WARN_MESSAGE_PREFIX		"[   WARN    ]"
+#define INFO_MESSAGE_PREFIX     "[   INFO    ]"
+
+// Exit codes
+#define OK		0		// Code to return to the operating system to indicate successful program termination
+#define ERROR	-1		// Code to return to the operating system to indicate an error condition
+
+typedef enum { FALSE, TRUE } BOOL;
+
 /**
  * Turns this library's messages on or off.
  * @param enabled TRUE to enable this library; FALSE to turn all messages off.
