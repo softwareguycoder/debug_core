@@ -1,0 +1,13 @@
+digraph "/home/bhart/git/debug_core/debug_core" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_f9e0d97a1e46f7d5052aa87ec8386d26 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_f9e0d97a1e46f7d5052aa87ec8386d26.html"];
+    dir_f9e0d97a1e46f7d5052aa87ec8386d26 [shape=plaintext label="debug_core"];
+    dir_7c36dd2f8144ad4266b3f4e35b1060be [shape=box label="Debug" color="red" fillcolor="white" style="filled" URL="dir_7c36dd2f8144ad4266b3f4e35b1060be.html"];
+    dir_2bbb9ea10ef1fae7ed13e229eb826bf7 [shape=box label="include" color="black" fillcolor="white" style="filled" URL="dir_2bbb9ea10ef1fae7ed13e229eb826bf7.html"];
+    dir_baad49d9bc16de5480a35e3bd616e684 [shape=box label="src" color="black" fillcolor="white" style="filled" URL="dir_baad49d9bc16de5480a35e3bd616e684.html"];
+  }
+  dir_baad49d9bc16de5480a35e3bd616e684->dir_2bbb9ea10ef1fae7ed13e229eb826bf7 [headlabel="3", labeldistance=1.5 headhref="dir_000004_000003.html"];
+}
