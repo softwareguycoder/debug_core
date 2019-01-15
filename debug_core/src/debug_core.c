@@ -13,11 +13,6 @@
 // Flag that turns this library on and off
 BOOL mute = FALSE;
 
-/**
- * Turns this library's messages on or off.
- * @param enabled TRUE to enable this library; FALSE to turn all messages off.
- * @remarks This library is enabled by default.
- */
 void toggle_debug(BOOL enabled)
 {
 	mute = !enabled;
