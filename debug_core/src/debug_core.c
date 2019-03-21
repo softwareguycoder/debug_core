@@ -11,6 +11,7 @@
 #include "debug_core.h"
 
 #define LOG_FORMAT		"%s %s %s\n"		// Format for fprintf to log messages
+#define TIMESTRLEN		1024				// Size of buffer for time string
 
 BOOL mute = FALSE;
 
@@ -41,7 +42,7 @@ void close_log_file() {
  * @remarks Utilized by the calls to fprintf that write log messages.  This function
  * is only available internally to this source file.
  */
-const char* get_current_time_string() {
+char* get_current_time_string() {
 	// time_t is arithmetic time type
 	time_t now;
 
@@ -49,10 +50,10 @@ const char* get_current_time_string() {
 	// time() returns the current time of the system as a time_t value
 	time(&now);
 
-	char* s = (char*)malloc(1000*sizeof(char));
+	char* s = (char*)malloc(TIMESTRLEN*sizeof(char));
 
 	// Format the curernt time as a string and return it
-	strftime(s, 1000, "%A, %B %d %Y", localtime(&now));
+	strftime(s, TIMESTRLEN, "%A, %B %d %Y", localtime(&now));
 
 	return s;
 }
@@ -128,7 +129,7 @@ void log_info(const char* message, ...) {
 
 	vsprintf(buf, message, args);
 
-	const char* timestring = get_current_time_string();
+	char* timestring = get_current_time_string();
 
 	fprintf(get_log_file_handle(),
 			LOG_FORMAT, timestring,
@@ -157,7 +158,7 @@ void log_warning(const char* message, ...) {
 
 	vsprintf(buf, message, args);
 
-	const char* timestring = get_current_time_string();
+	char* timestring = get_current_time_string();
 
 	fprintf(get_log_file_handle(),
 			LOG_FORMAT, timestring,
@@ -186,7 +187,7 @@ void log_error(const char* message, ...) {
 
 	vsprintf(buf, message, args);
 
-	const char* timestring = get_current_time_string();
+	char* timestring = get_current_time_string();
 
 	/* Send errors to error log file handle */
 	fprintf(get_error_log_file_handle(),
@@ -216,7 +217,7 @@ void log_debug(const char* message, ...) {
 
 	vsprintf(buf, message, args);
 
-	const char* timestring = get_current_time_string();
+	char* timestring = get_current_time_string();
 
 	fprintf(get_log_file_handle(),
 		LOG_FORMAT, timestring,
