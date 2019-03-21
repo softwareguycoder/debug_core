@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['log_5fdebug',['log_debug',['../debug__core_8h.html#a9845e8157cc395cb8f3ed1761048e4f3',1,'log_debug(const char *message,...):&#160;debug_core.c'],['../debug__core_8c.html#a9845e8157cc395cb8f3ed1761048e4f3',1,'log_debug(const char *message,...):&#160;debug_core.c']]],
-  ['log_5ferror',['log_error',['../debug__core_8h.html#a0327644dae0a0a5d4bdc8f7b6f54e31e',1,'log_error(const char *message,...):&#160;debug_core.c'],['../debug__core_8c.html#a0327644dae0a0a5d4bdc8f7b6f54e31e',1,'log_error(const char *message,...):&#160;debug_core.c']]],
-  ['log_5finfo',['log_info',['../debug__core_8h.html#af4431e39155e80c53e1f9aab22d5a0ef',1,'log_info(const char *message,...):&#160;debug_core.c'],['../debug__core_8c.html#af4431e39155e80c53e1f9aab22d5a0ef',1,'log_info(const char *message,...):&#160;debug_core.c']]],
-  ['log_5fwarning',['log_warning',['../debug__core_8h.html#a06b347c50387b36e0ff903e76be1c1d4',1,'log_warning(const char *message,...):&#160;debug_core.c'],['../debug__core_8c.html#a06b347c50387b36e0ff903e76be1c1d4',1,'log_warning(const char *message,...):&#160;debug_core.c']]]
+  ['g_5ffperrorlog',['g_fpErrorLog',['../debug__core_8c.html#a59ddd628f17e16da8145bf40e570edff',1,'debug_core.c']]],
+  ['g_5ffplog',['g_fpLog',['../debug__core_8c.html#aafd35cf408c2668ef549b1b98b82505e',1,'debug_core.c']]],
+  ['get_5fcurrent_5ftime_5fstring',['get_current_time_string',['../debug__core_8c.html#a7a08d5cb5fb9cb37d911034de1453aa1',1,'debug_core.c']]],
+  ['get_5ferror_5flog_5ffile_5fhandle',['get_error_log_file_handle',['../debug__core_8h.html#ae2e25848e6b6dc2f4ed28a880a9b77b7',1,'get_error_log_file_handle():&#160;debug_core.c'],['../debug__core_8c.html#ae2e25848e6b6dc2f4ed28a880a9b77b7',1,'get_error_log_file_handle():&#160;debug_core.c']]],
+  ['get_5flog_5ffile_5fhandle',['get_log_file_handle',['../debug__core_8h.html#a6a27ec1dab451acad7a3a8faa38400a5',1,'get_log_file_handle():&#160;debug_core.c'],['../debug__core_8c.html#a6a27ec1dab451acad7a3a8faa38400a5',1,'get_log_file_handle():&#160;debug_core.c']]]
 ];

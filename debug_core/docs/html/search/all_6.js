@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mute',['mute',['../debug__core_8c.html#a78cdd88fff44b397a78b40610740c8d6',1,'debug_core.c']]]
+  ['info_5fmessage_5fprefix',['INFO_MESSAGE_PREFIX',['../debug__core_8h.html#a3ac4cd0ee67df964d52c89cfa9a77480',1,'debug_core.h']]]
 ];

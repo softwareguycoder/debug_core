@@ -14,24 +14,24 @@
 
 BOOL mute = FALSE;
 
-FILE* g_fLog = stdout;
-FILE* g_fErrorLog = stderr;
+FILE* g_fpLog;
+FILE* g_fpErrorLog;
 
 void close_log_file() {
 	/* Close the g_fLog file handle, if and only if it is not
 	 * currently referencing the standard output or is a NULL value
 	 * already.
 	 */
-	if (g_fLog != NULL && g_fLog != stdout) {
-		fclose(g_fLog);
-		g_fLog = NULL;
+	if (g_fpLog != NULL && g_fpLog != stdout) {
+		fclose(g_fpLog);
+		g_fpLog = NULL;
 	}
 
 	/* Close the g_fErrorLog file handle, if and only if it is not
 	 * already referencing standard error, or if it is non-NULL. */
-	if (g_fErrorLog != NULL && g_fErrorLog != stderr) {
-		fclose(g_fErrorLog);
-		g_fErrorLog = NULL;
+	if (g_fpErrorLog != NULL && g_fpErrorLog != stderr) {
+		fclose(g_fpErrorLog);
+		g_fpErrorLog = NULL;
 	}
 }
 
@@ -54,31 +54,32 @@ const char* get_current_time_string() {
 }
 
 FILE* get_error_log_file_handle() {
-	return g_fErrorLog;
+	return g_fpErrorLog;
 }
 
 FILE* get_log_file_handle() {
-	return g_fLog;
+	return g_fpLog;
 }
 
-void set_error_log_file(FILE* fErrorLogFile) {
+void set_error_log_file(FILE* fpErrorLogFile) {
 	// Check whether the FILE pointer given to us is non-NULL;
 	// if it's NULL, then stop.
-	if (fErrorLogFile == NULL) {
-		return;
+	if (fpErrorLogFile == NULL) {
+			g_fpErrorLog = stderr;
+			return;
 	}
-
 	// Set the global error log file handle to the value passed.
 	// Callers are responsible for ensuring that the FILE pointer
 	// passed is a handle to a file that is currently open for
 	// reading, writing, and/or appending.
-	g_fErrorLog = fErrorLogFile;
+	g_fpErrorLog = fpErrorLogFile;
 }
 
-void set_log_file(FILE* fLogFile) {
+void set_log_file(FILE* fpLogFile) {
 	// Check whether the FILE pointer given to us is non-NULL;
 	// if it's NULL, then stop.
-	if (fLogFile == NULL) {
+	if (fpLogFile == NULL) {
+		g_fpLog = stdout;
 		return;
 	}
 
@@ -86,17 +87,17 @@ void set_log_file(FILE* fLogFile) {
 	// Callers are responsible for ensuring that the FILE pointer
 	// passed is a handle to a file that is currently open for
 	// reading, writing, and/or appending.
-	g_fLog = fLogFile;
+	g_fpLog = fpLogFile;
 }
 
 void set_log_file_path(const char* path) {
 	if (path == NULL || strlen(path) == 0 || path[0] == '\0')
 		return;
 
-	g_fLog = g_fErrorLog = fopen(path, "a+");
-	if (g_fLog == NULL) {
-		g_fLog = stdout;
-		g_fLog = stderr;
+	g_fpLog = g_fpErrorLog = fopen(path, "a+");
+	if (g_fpLog == NULL) {
+		g_fpLog = stdout;
+		g_fpLog = stderr;
 		return;
 	}
 }
@@ -108,6 +109,9 @@ void toggle_debug(BOOL enabled) {
 void log_info(const char* message, ...) {
 	if (mute == TRUE)
 		return;
+
+	if (get_log_file_handle() == NULL)
+		set_log_file(stdout);
 
 	va_list args;
 	va_start(args, message);
@@ -131,6 +135,9 @@ void log_warning(const char* message, ...) {
 	if (mute == TRUE)
 		return;
 
+	if (get_log_file_handle() == NULL)
+		set_log_file(stdout);
+
 	va_list args;
 	va_start(args, message);
 
@@ -152,6 +159,9 @@ void log_warning(const char* message, ...) {
 void log_error(const char* message, ...) {
 	if (mute == TRUE)
 		return;
+
+	if (get_error_log_file_handle() == NULL)
+		set_error_log_file(stderr);
 
 	va_list args;
 	va_start(args, message);
@@ -175,6 +185,9 @@ void log_error(const char* message, ...) {
 void log_debug(const char* message, ...) {
 	if (mute == TRUE)
 		return;
+
+	if (get_log_file_handle() == NULL)
+		set_log_file(stdout);
 
 	va_list args;
 	va_start(args, message);

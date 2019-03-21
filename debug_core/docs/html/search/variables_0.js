@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['mute',['mute',['../debug__core_8c.html#a78cdd88fff44b397a78b40610740c8d6',1,'debug_core.c']]]
+  ['g_5ffperrorlog',['g_fpErrorLog',['../debug__core_8c.html#a59ddd628f17e16da8145bf40e570edff',1,'debug_core.c']]],
+  ['g_5ffplog',['g_fpLog',['../debug__core_8c.html#aafd35cf408c2668ef549b1b98b82505e',1,'debug_core.c']]]
 ];

@@ -123,6 +123,35 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr><td colspan="2"><div class="groupHeader">close_log_file</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Closes the log file handles.</p>
+<dl class="section remark"><dt>Remarks</dt><dd>Call this function any time you are logging to disk instead of STDOUT/STDERR (the default). </dd></dl>
+</div></td></tr>
+<tr class="memitem:a9a936875d0e2202f24f0e6b194e61725"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8h.html#a9a936875d0e2202f24f0e6b194e61725">close_log_file</a> ()</td></tr>
+<tr class="separator:a9a936875d0e2202f24f0e6b194e61725"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">get_error_log_file_handle</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Gets a reference to the FILE pointer that is in use for error logging. </p>
+</div></td></tr>
+<tr class="memitem:ae2e25848e6b6dc2f4ed28a880a9b77b7"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8h.html#ae2e25848e6b6dc2f4ed28a880a9b77b7">get_error_log_file_handle</a> ()</td></tr>
+<tr class="separator:ae2e25848e6b6dc2f4ed28a880a9b77b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">get_log_file_handle</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Gets a reference to the FILE pointer that is in use for logging.</p>
+<dl class="section return"><dt>Returns</dt><dd>FILE pointer to the file open for logging. Can be set to stdin, stdout, or stderr. </dd></dl>
+</div></td></tr>
+<tr class="memitem:a6a27ec1dab451acad7a3a8faa38400a5"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8h.html#a6a27ec1dab451acad7a3a8faa38400a5">get_log_file_handle</a> ()</td></tr>
+<tr class="separator:a6a27ec1dab451acad7a3a8faa38400a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">set_error_log_file</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Sets the FILE pointer to be used for error logging. Can be set to stdin, stdout, or stderr.</p>
+<dl class="section remark"><dt>Remarks</dt><dd>If this function is not called, then stderr is used for error logging by default. </dd></dl>
+</div></td></tr>
+<tr class="memitem:ae2ca940ea8cb77dcc43af83d3d7036f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8h.html#ae2ca940ea8cb77dcc43af83d3d7036f2">set_error_log_file</a> (FILE *fErrorLogFile)</td></tr>
+<tr class="separator:ae2ca940ea8cb77dcc43af83d3d7036f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">set_log_file</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Sets the FILE pointer to be used for logging. Can be set to stdin, stdout, or stderr.</p>
+<dl class="section remark"><dt>Remarks</dt><dd>If this function is not called, then stdout is used for logging by default. </dd></dl>
+</div></td></tr>
+<tr class="memitem:aa824649e6cdaba66cff2e15eafde5574"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8h.html#aa824649e6cdaba66cff2e15eafde5574">set_log_file</a> (FILE *fLogFile)</td></tr>
+<tr class="separator:aa824649e6cdaba66cff2e15eafde5574"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">toggle_debug</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>Turns this library's messages on or off.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -303,6 +332,63 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a9a936875d0e2202f24f0e6b194e61725"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a936875d0e2202f24f0e6b194e61725">&#9670;&nbsp;</a></span>close_log_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void close_log_file </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00020">20</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+
+</div>
+</div>
+<a id="ae2e25848e6b6dc2f4ed28a880a9b77b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2e25848e6b6dc2f4ed28a880a9b77b7">&#9670;&nbsp;</a></span>get_error_log_file_handle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FILE* get_error_log_file_handle </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00056">56</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+
+</div>
+</div>
+<a id="a6a27ec1dab451acad7a3a8faa38400a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a27ec1dab451acad7a3a8faa38400a5">&#9670;&nbsp;</a></span>get_log_file_handle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FILE* get_log_file_handle </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00060">60</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+
+</div>
+</div>
 <a id="a9845e8157cc395cb8f3ed1761048e4f3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9845e8157cc395cb8f3ed1761048e4f3">&#9670;&nbsp;</a></span>log_debug()</h2>
 
@@ -329,7 +415,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00082">82</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00185">185</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -359,7 +445,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00061">61</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00159">159</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -389,7 +475,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00021">21</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00109">109</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -419,7 +505,47 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00041">41</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00134">134</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+
+</div>
+</div>
+<a id="ae2ca940ea8cb77dcc43af83d3d7036f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2ca940ea8cb77dcc43af83d3d7036f2">&#9670;&nbsp;</a></span>set_error_log_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_error_log_file </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fErrorLogFile</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00064">64</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+
+</div>
+</div>
+<a id="aa824649e6cdaba66cff2e15eafde5574"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa824649e6cdaba66cff2e15eafde5574">&#9670;&nbsp;</a></span>set_log_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_log_file </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fLogFile</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00078">78</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -439,7 +565,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00016">16</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00105">105</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>

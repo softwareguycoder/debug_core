@@ -65,6 +65,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
@@ -83,8 +84,31 @@ Include dependency graph for debug_core.c:</div>
 </div>
 <p><a href="debug__core_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:abf98cf0751acc730ea451ef31335004a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8c.html#abf98cf0751acc730ea451ef31335004a">LOG_FORMAT</a>&#160;&#160;&#160;&quot;%s %s %s\n&quot;</td></tr>
+<tr class="separator:abf98cf0751acc730ea451ef31335004a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a9a936875d0e2202f24f0e6b194e61725"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8c.html#a9a936875d0e2202f24f0e6b194e61725">close_log_file</a> ()</td></tr>
+<tr class="separator:a9a936875d0e2202f24f0e6b194e61725"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">get_current_time_string</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Returns the string obtained by calling asctime.</p>
+<dl class="section remark"><dt>Remarks</dt><dd>Utilized by the calls to fprintf that write log messages. This function is only available internally to this source file. </dd></dl>
+</div></td></tr>
+<tr class="memitem:a7a08d5cb5fb9cb37d911034de1453aa1"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8c.html#a7a08d5cb5fb9cb37d911034de1453aa1">get_current_time_string</a> ()</td></tr>
+<tr class="separator:a7a08d5cb5fb9cb37d911034de1453aa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2e25848e6b6dc2f4ed28a880a9b77b7"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8c.html#ae2e25848e6b6dc2f4ed28a880a9b77b7">get_error_log_file_handle</a> ()</td></tr>
+<tr class="separator:ae2e25848e6b6dc2f4ed28a880a9b77b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a27ec1dab451acad7a3a8faa38400a5"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8c.html#a6a27ec1dab451acad7a3a8faa38400a5">get_log_file_handle</a> ()</td></tr>
+<tr class="separator:a6a27ec1dab451acad7a3a8faa38400a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81b78f4a2f9d41b8f9c7f0bbb9f28198"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8c.html#a81b78f4a2f9d41b8f9c7f0bbb9f28198">set_error_log_file</a> (FILE *fpErrorLogFile)</td></tr>
+<tr class="separator:a81b78f4a2f9d41b8f9c7f0bbb9f28198"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ea3a5c893925a67b11f970d0a4f1f1d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8c.html#a7ea3a5c893925a67b11f970d0a4f1f1d">set_log_file</a> (FILE *fpLogFile)</td></tr>
+<tr class="separator:a7ea3a5c893925a67b11f970d0a4f1f1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdd98c697fe5a578cd8e498445209988"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8c.html#abdd98c697fe5a578cd8e498445209988">set_log_file_path</a> (const char *path)</td></tr>
+<tr class="separator:abdd98c697fe5a578cd8e498445209988"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32b1c84ffb8e431c92ff38194294f01e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8c.html#a32b1c84ffb8e431c92ff38194294f01e">toggle_debug</a> (<a class="el" href="debug__core_8h.html#a3e5b8192e7d9ffaf3542f1210aec18dd">BOOL</a> enabled)</td></tr>
 <tr class="separator:a32b1c84ffb8e431c92ff38194294f01e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4431e39155e80c53e1f9aab22d5a0ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8c.html#af4431e39155e80c53e1f9aab22d5a0ef">log_info</a> (const char *message,...)</td></tr>
@@ -100,8 +124,105 @@ Functions</h2></td></tr>
 Variables</h2></td></tr>
 <tr class="memitem:a78cdd88fff44b397a78b40610740c8d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="debug__core_8h.html#a3e5b8192e7d9ffaf3542f1210aec18dd">BOOL</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8c.html#a78cdd88fff44b397a78b40610740c8d6">mute</a> = <a class="el" href="debug__core_8h.html#a3e5b8192e7d9ffaf3542f1210aec18ddaa1e095cc966dbecf6a0d8aad75348d1a">FALSE</a></td></tr>
 <tr class="separator:a78cdd88fff44b397a78b40610740c8d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafd35cf408c2668ef549b1b98b82505e"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8c.html#aafd35cf408c2668ef549b1b98b82505e">g_fpLog</a></td></tr>
+<tr class="separator:aafd35cf408c2668ef549b1b98b82505e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59ddd628f17e16da8145bf40e570edff"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8c.html#a59ddd628f17e16da8145bf40e570edff">g_fpErrorLog</a></td></tr>
+<tr class="separator:a59ddd628f17e16da8145bf40e570edff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="abf98cf0751acc730ea451ef31335004a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf98cf0751acc730ea451ef31335004a">&#9670;&nbsp;</a></span>LOG_FORMAT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_FORMAT&#160;&#160;&#160;&quot;%s %s %s\n&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00013">13</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a9a936875d0e2202f24f0e6b194e61725"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a936875d0e2202f24f0e6b194e61725">&#9670;&nbsp;</a></span>close_log_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void close_log_file </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00020">20</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+
+</div>
+</div>
+<a id="a7a08d5cb5fb9cb37d911034de1453aa1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a08d5cb5fb9cb37d911034de1453aa1">&#9670;&nbsp;</a></span>get_current_time_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* get_current_time_string </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00044">44</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+
+</div>
+</div>
+<a id="ae2e25848e6b6dc2f4ed28a880a9b77b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2e25848e6b6dc2f4ed28a880a9b77b7">&#9670;&nbsp;</a></span>get_error_log_file_handle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FILE* get_error_log_file_handle </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00056">56</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+
+</div>
+</div>
+<a id="a6a27ec1dab451acad7a3a8faa38400a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a27ec1dab451acad7a3a8faa38400a5">&#9670;&nbsp;</a></span>get_log_file_handle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FILE* get_log_file_handle </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00060">60</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+
+</div>
+</div>
 <a id="a9845e8157cc395cb8f3ed1761048e4f3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9845e8157cc395cb8f3ed1761048e4f3">&#9670;&nbsp;</a></span>log_debug()</h2>
 
@@ -128,7 +249,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00082">82</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00185">185</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -158,7 +279,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00061">61</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00159">159</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -188,7 +309,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00021">21</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00109">109</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -218,7 +339,67 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00041">41</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00134">134</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+
+</div>
+</div>
+<a id="a81b78f4a2f9d41b8f9c7f0bbb9f28198"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81b78f4a2f9d41b8f9c7f0bbb9f28198">&#9670;&nbsp;</a></span>set_error_log_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_error_log_file </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fpErrorLogFile</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00064">64</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+
+</div>
+</div>
+<a id="a7ea3a5c893925a67b11f970d0a4f1f1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ea3a5c893925a67b11f970d0a4f1f1d">&#9670;&nbsp;</a></span>set_log_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_log_file </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fpLogFile</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00078">78</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+
+</div>
+</div>
+<a id="abdd98c697fe5a578cd8e498445209988"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdd98c697fe5a578cd8e498445209988">&#9670;&nbsp;</a></span>set_log_file_path()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_log_file_path </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00093">93</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -238,11 +419,43 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00016">16</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00105">105</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="a59ddd628f17e16da8145bf40e570edff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59ddd628f17e16da8145bf40e570edff">&#9670;&nbsp;</a></span>g_fpErrorLog</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FILE* g_fpErrorLog</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00018">18</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+
+</div>
+</div>
+<a id="aafd35cf408c2668ef549b1b98b82505e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafd35cf408c2668ef549b1b98b82505e">&#9670;&nbsp;</a></span>g_fpLog</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FILE* g_fpLog</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00017">17</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+
+</div>
+</div>
 <a id="a78cdd88fff44b397a78b40610740c8d6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a78cdd88fff44b397a78b40610740c8d6">&#9670;&nbsp;</a></span>mute</h2>
 
@@ -255,7 +468,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00014">14</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00015">15</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
