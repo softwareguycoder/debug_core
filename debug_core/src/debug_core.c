@@ -18,12 +18,20 @@ FILE* g_fLog = stdout;
 FILE* g_fErrorLog = stderr;
 
 void close_log_file() {
+	/* Close the g_fLog file handle, if and only if it is not
+	 * currently referencing the standard output or is a NULL value
+	 * already.
+	 */
 	if (g_fLog != NULL && g_fLog != stdout) {
 		fclose(g_fLog);
+		g_fLog = NULL;
 	}
 
+	/* Close the g_fErrorLog file handle, if and only if it is not
+	 * already referencing standard error, or if it is non-NULL. */
 	if (g_fErrorLog != NULL && g_fErrorLog != stderr) {
 		fclose(g_fErrorLog);
+		g_fErrorLog = NULL;
 	}
 }
 
