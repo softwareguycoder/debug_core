@@ -53,7 +53,8 @@ char* get_current_time_string() {
 	char* s = (char*)malloc(TIMESTRLEN*sizeof(char));
 
 	// Format the curernt time as a string and return it
-	strftime(s, TIMESTRLEN, "%A, %B %d %Y", localtime(&now));
+	//strftime(s, TIMESTRLEN, "%A, %B %d %Y ", localtime(&now));
+	strftime(s, TIMESTRLEN, "%c", localtime(&now));
 
 	return s;
 }
