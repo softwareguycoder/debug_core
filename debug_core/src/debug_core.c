@@ -49,8 +49,12 @@ const char* get_current_time_string() {
 	// time() returns the current time of the system as a time_t value
 	time(&now);
 
+	char* s = (char*)malloc(1000*sizeof(char));
+
 	// Format the curernt time as a string and return it
-	return ctime(&now);
+	strftime(s, 1000, "%A, %B %d %Y", localtime(&now));
+
+	return s;
 }
 
 FILE* get_error_log_file_handle() {
@@ -124,9 +128,13 @@ void log_info(const char* message, ...) {
 
 	vsprintf(buf, message, args);
 
+	const char* timestring = get_current_time_string();
+
 	fprintf(get_log_file_handle(),
-			LOG_FORMAT, get_current_time_string(),
+			LOG_FORMAT, timestring,
 			INFO_MESSAGE_PREFIX, buf);
+
+	free(timestring);
 
 	va_end(args);
 }
@@ -149,9 +157,13 @@ void log_warning(const char* message, ...) {
 
 	vsprintf(buf, message, args);
 
+	const char* timestring = get_current_time_string();
+
 	fprintf(get_log_file_handle(),
-			LOG_FORMAT, get_current_time_string(),
+			LOG_FORMAT, timestring,
 			WARN_MESSAGE_PREFIX, buf);
+
+	free(timestring);
 
 	va_end(args);
 }
@@ -174,10 +186,14 @@ void log_error(const char* message, ...) {
 
 	vsprintf(buf, message, args);
 
+	const char* timestring = get_current_time_string();
+
 	/* Send errors to error log file handle */
 	fprintf(get_error_log_file_handle(),
-		LOG_FORMAT, get_current_time_string(),
+		LOG_FORMAT, timestring,
 		ERROR_MESSAGE_PREFIX, buf);
+
+	free(timestring);
 
 	va_end(args);
 }
@@ -200,9 +216,13 @@ void log_debug(const char* message, ...) {
 
 	vsprintf(buf, message, args);
 
+	const char* timestring = get_current_time_string();
+
 	fprintf(get_log_file_handle(),
-		LOG_FORMAT, get_current_time_string(),
+		LOG_FORMAT, timestring,
 		DEBUG_MESSAGE_PREFIX, buf);
+
+	free(timestring);
 
 	va_end(args);
 }
