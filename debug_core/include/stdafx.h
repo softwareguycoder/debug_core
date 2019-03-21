@@ -4,5 +4,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdarg.h>
+#include <time.h>
 
 #endif //__DEBUG_CORE_STDAFX_H__

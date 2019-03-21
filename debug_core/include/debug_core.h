@@ -55,7 +55,43 @@
  * @name BOOL
  * @brief Data type to encode a one-or-zero, true-or-false value.
  */
-typedef enum { FALSE, TRUE } BOOL;
+typedef enum {
+	FALSE, TRUE
+} BOOL;
+
+/**
+ * @name close_log_file
+ * @brief Closes the log file handles.
+ * @remarks Call this function any time you are logging to disk instead of STDOUT/STDERR (the default).
+ */
+void close_log_file();
+
+/**
+ * @name get_error_log_file_handle
+ * @brief Gets a reference to the FILE pointer that is in use for error logging.
+ */
+FILE* get_error_log_file_handle();
+
+/**
+ * @name get_log_file_handle
+ * @brief Gets a reference to the FILE pointer that is in use for logging.
+ * @returns FILE pointer to the file open for logging.  Can be set to stdin, stdout, or stderr.
+ */
+FILE* get_log_file_handle();
+
+/**
+ * @name set_error_log_file
+ * @brief Sets the FILE pointer to be used for error logging.  Can be set to stdin, stdout, or stderr.
+ * @remarks If this function is not called, then stderr is used for error logging by default.
+ */
+void set_error_log_file(FILE* fErrorLogFile);
+
+/**
+ * @name set_log_file
+ * @brief Sets the FILE pointer to be used for logging.  Can be set to stdin, stdout, or stderr.
+ * @remarks If this function is not called, then stdout is used for logging by default.
+ */
+void set_log_file(FILE* fLogFile);
 
 /**
  * @name toggle_debug
