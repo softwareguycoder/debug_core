@@ -5,6 +5,10 @@
  *  Created on: Jul 13, 2018
  *      Author: bhart
  *      Contains routines for debugging, such as logging etc.
+ *      NOTE!  This code is NOT thread-safe!  Use the debug_threadsafe library
+ *      in a multithreaded logging environment.  The debug_threadsafe library has
+ *      dependencies on threading_core and mutex_core; however, if you're using that
+ *      specific library, it's assumed you're using those as dependencies anyway.
  */
 
 #include "stdafx.h"
