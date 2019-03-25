@@ -20,6 +20,10 @@ BOOL mute = FALSE;
 FILE* g_fLog;                               // File handle for logging messages other than errors
 FILE* g_fpErrorLog;                         // File handle for logging errors
 
+void close_log_file_handles() {
+	close_log_file();
+}
+
 void close_log_file() {
 	/* Close the g_fLog file handle, if and only if it is not
 	 * currently referencing the standard output or is a NULL value
