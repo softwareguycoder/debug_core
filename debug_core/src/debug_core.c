@@ -15,8 +15,10 @@
 
 BOOL mute = FALSE;
 
-FILE* g_fpLog;
-FILE* g_fpErrorLog;
+// File handles to support writing logs to a file
+
+FILE* g_fLog;                               // File handle for logging messages other than errors
+FILE* g_fpErrorLog;                         // File handle for logging errors
 
 void close_log_file() {
 	/* Close the g_fLog file handle, if and only if it is not
