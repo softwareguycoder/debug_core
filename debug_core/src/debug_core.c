@@ -264,6 +264,8 @@ void write_log(FILE* fp, const char* prefix, const char* buf) {
 		char* timestring = get_current_time_string();
 
 		fprintf(fp, LOG_FORMAT, timestring, prefix, buf);
+		fflush(fp);
+
 
 		free(timestring);
 		timestring = NULL;
