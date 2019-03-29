@@ -8,6 +8,9 @@
 #ifndef __DEBUG_CORE_H__
 #define __DEBUG_CORE_H__
 
+// Forward declaration of BOOL data type
+typedef enum BOOL;
+
 /**
  * @name DEBUG_MESSAGE_PREFIX
  * @brief Constant that defines the string prefix for a message at the DEBUG level.
