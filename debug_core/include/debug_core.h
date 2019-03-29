@@ -8,8 +8,7 @@
 #ifndef __DEBUG_CORE_H__
 #define __DEBUG_CORE_H__
 
-// Forward declaration of BOOL data type
-typedef enum BOOL;
+#include <../../common_core/common_core/include/common_core.h>
 
 /**
  * @name DEBUG_MESSAGE_PREFIX

@@ -3,6 +3,7 @@
 	<name>debug_core</name>
 	<comment></comment>
 	<projects>
+		<project>common_core</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

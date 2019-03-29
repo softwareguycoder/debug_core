@@ -9,8 +9,4 @@
 #include <unistd.h>  //Header file for sleep(). man 3 sleep for details.
 #include <pthread.h>
 
-typedef enum {
-	FALSE, TRUE
-} BOOL;
-
 #endif //__DEBUG_CORE_STDAFX_H__

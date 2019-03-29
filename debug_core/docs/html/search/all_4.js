@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['false',['FALSE',['../stdafx_8h.html#a3e5b8192e7d9ffaf3542f1210aec18ddaa1e095cc966dbecf6a0d8aad75348d1a',1,'stdafx.h']]]
+  ['info_5fmessage_5fprefix',['INFO_MESSAGE_PREFIX',['../debug__core_8h.html#a3ac4cd0ee67df964d52c89cfa9a77480',1,'debug_core.h']]],
+  ['interlockedclosefile',['InterlockedCloseFile',['../debug__core_8c.html#a80b9e7f2364f59a84a68a3ff02b3b271',1,'debug_core.c']]]
 ];

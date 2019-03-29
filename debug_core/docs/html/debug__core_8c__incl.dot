@@ -21,4 +21,6 @@ digraph "/home/bhart/git/debug_core/debug_core/src/debug_core.c"
   Node8 [label="pthread.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
   Node0 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node9 [label="debug_core.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$debug__core_8h.html"];
+  Node9 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="../../common_core/common\l_core/include/common_core.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
 }
