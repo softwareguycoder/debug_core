@@ -5,6 +5,10 @@
  *  Created on: Jul 13, 2018
  *      Author: bhart
  *      Contains routines for debugging, such as logging etc.
+ *      NOTE!  This code is NOT thread-safe!  Use the debug_threadsafe library
+ *      in a multithreaded logging environment.  The debug_threadsafe library has
+ *      dependencies on threading_core and mutex_core; however, if you're using that
+ *      specific library, it's assumed you're using those as dependencies anyway.
  */
 
 #include "stdafx.h"
@@ -112,7 +116,7 @@ void close_log_file_handles() {
 }
 
 void close_log_file() {
-	/* Close the g_fLog file handle, if and only if it is not
+	/* Close the g_fpLog file handle, if and only if it is not
 	 * currently referencing the standard output or is a NULL value
 	 * already.
 	 */

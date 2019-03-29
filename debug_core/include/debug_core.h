@@ -56,6 +56,13 @@ typedef enum {
 } BOOL;
 
 /**
+ * @name close_log_file_handles
+ * @brief Closes the log file handles.
+ * @remarks Call this function any time you are logging to disk instead of STDOUT/STDERR (the default).
+ */
+void close_log_file_handles();
+
+/**
  * @name close_log_file
  * @brief Closes the log file handles.
  * @remarks Call this function any time you are logging to disk instead of STDOUT/STDERR (the default).
