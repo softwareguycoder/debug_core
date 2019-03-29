@@ -51,10 +51,6 @@
 #define ERROR	-1		// Code to return to the operating system to indicate an error condition
 #endif //ERROR
 
-/**
- * @name BOOL
- * @brief Data type to encode a one-or-zero, true-or-false value.
- */
 typedef enum {
 	FALSE, TRUE
 } BOOL;

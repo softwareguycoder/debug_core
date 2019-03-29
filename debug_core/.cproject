@@ -83,6 +83,8 @@
                                     								
                                 </option>
                                 								
+                                <option id="gnu.c.compiler.option.pthread.1322208118" superClass="gnu.c.compiler.option.pthread" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+                                								
                                 <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1279392625" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
                                 							
                             </tool>
@@ -90,6 +92,8 @@
                             <tool id="cdt.managedbuild.tool.gnu.c.linker.so.debug.1699124049" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.so.debug">
                                 								
                                 <option defaultValue="true" id="gnu.c.link.so.debug.option.shared.848008404" name="Shared (-shared)" superClass="gnu.c.link.so.debug.option.shared" useByScannerDiscovery="false" valueType="boolean"/>
+                                								
+                                <option id="gnu.c.link.option.ldflags.1296052227" name="Linker flags" superClass="gnu.c.link.option.ldflags" useByScannerDiscovery="false" value="" valueType="string"/>
                                 								
                                 <inputType id="cdt.managedbuild.tool.gnu.c.linker.input.1494272688" superClass="cdt.managedbuild.tool.gnu.c.linker.input">
                                     									
