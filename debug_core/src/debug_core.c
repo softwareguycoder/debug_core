@@ -97,12 +97,15 @@ void InterlockedCloseFile(FILE* fp) {
 	GetLoggingMutex();
 	{
 		if (fp == NULL) {
+			ReleaseLoggingMutex();
 			return;
 		}
 		if (fp == stdout) {
+			ReleaseLoggingMutex();
 			return;
 		}
 		if (fp == stderr) {
+			ReleaseLoggingMutex();
 			return;
 		}
 
