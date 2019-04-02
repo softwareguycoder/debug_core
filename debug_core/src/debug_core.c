@@ -112,14 +112,9 @@ void InterlockedCloseFile(FILE* fp) {
 }
 
 void close_log_file_handles() {
-	close_log_file();
-}
-
-void close_log_file() {
 	/* Close the g_fpLog file handle, if and only if it is not
 	 * currently referencing the standard output or is a NULL value
-	 * already.
-	 */
+	 * already. */
 	InterlockedCloseFile(g_fpLog);
 
 	/* Close the g_fpErrorLog file handle, if and only if it is not
