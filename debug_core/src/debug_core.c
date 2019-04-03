@@ -1,6 +1,6 @@
 /*
 
- * debug.c
+ * debug_core.c
  *
  *  Created on: Jul 13, 2018
  *      Author: bhart
@@ -248,14 +248,20 @@ void write_log(FILE* fp, const char* prefix, const char* buf) {
 	GetLoggingMutex();
 	{
 		if (fp == NULL) {
+			ReleaseLoggingMutex();
+
 			return;
 		}
 
 		if (prefix == NULL || prefix[0] == '\0' || strlen(prefix) == 0) {
+			ReleaseLoggingMutex();
+
 			return;
 		}
 
 		if (buf == NULL || buf[0] == '\0' || strlen(buf) == 0) {
+			ReleaseLoggingMutex();
+
 			return;
 		}
 
