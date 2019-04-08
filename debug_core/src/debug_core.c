@@ -14,6 +14,7 @@
 #include "stdafx.h"
 #include "debug_core.h"
 
+#define LOG_BUFFER_SIZE	4096
 #define LOG_FORMAT		"%s %s %s\n"		// Format for fprintf to log messages
 #define TIMESTRLEN		1024				// Size of buffer for time string
 
@@ -291,7 +292,7 @@ void log_info(const char* message, ...) {
 		return;
 	}
 
-	char buf[strlen(message + 1)];
+	char buf[LOG_BUFFER_SIZE];
 
 	vsprintf(buf, message, args);
 
@@ -314,7 +315,7 @@ void log_warning(const char* message, ...) {
 		return;
 	}
 
-	char buf[strlen(message + 1)];
+	char buf[LOG_BUFFER_SIZE];
 
 	vsprintf(buf, message, args);
 
@@ -337,7 +338,7 @@ void log_error(const char* message, ...) {
 		return;
 	}
 
-	char buf[strlen(message + 1)];
+	char buf[LOG_BUFFER_SIZE];
 
 	vsprintf(buf, message, args);
 
@@ -360,7 +361,7 @@ void log_debug(const char* message, ...) {
 		return;
 	}
 
-	char buf[strlen(message + 1)];
+	char buf[LOG_BUFFER_SIZE];
 
 	vsprintf(buf, message, args);
 
