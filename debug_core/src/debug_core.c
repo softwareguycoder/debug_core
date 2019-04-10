@@ -115,7 +115,7 @@ void InterlockedCloseFile(FILE* fp) {
 	ReleaseLoggingMutex();
 }
 
-void close_log_file_handles() {
+void CloseLogFileHandles() {
 	/* Close the g_fpLog file handle, if and only if it is not
 	 * currently referencing the standard output or is a NULL value
 	 * already. */
@@ -151,11 +151,11 @@ char* get_current_time_string() {
 	return s;
 }
 
-FILE* get_error_log_file_handle() {
+FILE* GetErrorLogFileHandle() {
 	return g_fpErrorLog;
 }
 
-FILE* get_log_file_handle() {
+FILE* GetLogFileHandle() {
 	return g_fpLog;
 }
 
@@ -282,7 +282,7 @@ void log_info(const char* message, ...) {
 	if (mute == TRUE)
 		return;
 
-	if (get_log_file_handle() == NULL)
+	if (GetLogFileHandle() == NULL)
 		set_log_file(stdout);
 
 	va_list args;
@@ -296,7 +296,7 @@ void log_info(const char* message, ...) {
 
 	vsprintf(buf, message, args);
 
-	write_log(get_log_file_handle(), INFO_MESSAGE_PREFIX, buf);
+	write_log(GetLogFileHandle(), INFO_MESSAGE_PREFIX, buf);
 
 	va_end(args);
 }
@@ -305,7 +305,7 @@ void log_warning(const char* message, ...) {
 	if (mute == TRUE)
 		return;
 
-	if (get_log_file_handle() == NULL)
+	if (GetLogFileHandle() == NULL)
 		set_log_file(stdout);
 
 	va_list args;
@@ -319,7 +319,7 @@ void log_warning(const char* message, ...) {
 
 	vsprintf(buf, message, args);
 
-	write_log(get_log_file_handle(), WARN_MESSAGE_PREFIX, buf);
+	write_log(GetLogFileHandle(), WARN_MESSAGE_PREFIX, buf);
 
 	va_end(args);
 }
@@ -328,7 +328,7 @@ void log_error(const char* message, ...) {
 	if (mute == TRUE)
 		return;
 
-	if (get_error_log_file_handle() == NULL)
+	if (GetErrorLogFileHandle() == NULL)
 		set_error_log_file(stderr);
 
 	va_list args;
@@ -342,7 +342,7 @@ void log_error(const char* message, ...) {
 
 	vsprintf(buf, message, args);
 
-	write_log(get_error_log_file_handle(), ERROR_MESSAGE_PREFIX, buf);
+	write_log(GetErrorLogFileHandle(), ERROR_MESSAGE_PREFIX, buf);
 
 	va_end(args);
 }
@@ -351,7 +351,7 @@ void log_debug(const char* message, ...) {
 	if (mute == TRUE)
 		return;
 
-	if (get_log_file_handle() == NULL)
+	if (GetLogFileHandle() == NULL)
 		set_log_file(stdout);
 
 	va_list args;
@@ -365,7 +365,7 @@ void log_debug(const char* message, ...) {
 
 	vsprintf(buf, message, args);
 
-	write_log(get_log_file_handle(), DEBUG_MESSAGE_PREFIX, buf);
+	write_log(GetLogFileHandle(), DEBUG_MESSAGE_PREFIX, buf);
 
 	va_end(args);
 }

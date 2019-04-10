@@ -58,20 +58,20 @@
  * @brief Closes the log file handles.
  * @remarks Call this function any time you are logging to disk instead of STDOUT/STDERR (the default).
  */
-void close_log_file_handles();
+void CloseLogFileHandles();
 
 /**
  * @name get_error_log_file_handle
  * @brief Gets a reference to the FILE pointer that is in use for error logging.
  */
-FILE* get_error_log_file_handle();
+FILE* GetErrorLogFileHandle();
 
 /**
  * @name get_log_file_handle
  * @brief Gets a reference to the FILE pointer that is in use for logging.
  * @returns FILE pointer to the file open for logging.  Can be set to stdin, stdout, or stderr.
  */
-FILE* get_log_file_handle();
+FILE* GetLogFileHandle();
 
 /**
  * @name set_error_log_file
