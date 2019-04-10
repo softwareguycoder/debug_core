@@ -78,14 +78,14 @@ FILE* GetLogFileHandle();
  * @brief Sets the FILE pointer to be used for error logging.  Can be set to stdin, stdout, or stderr.
  * @remarks If this function is not called, then stderr is used for error logging by default.
  */
-void set_error_log_file(FILE* fErrorLogFile);
+void SetErrorLogFileHandle(FILE* fErrorLogFile);
 
 /**
  * @name set_log_file
  * @brief Sets the FILE pointer to be used for logging.  Can be set to stdin, stdout, or stderr.
  * @remarks If this function is not called, then stdout is used for logging by default.
  */
-void set_log_file(FILE* fLogFile);
+void SetLogFileHandle(FILE* fLogFile);
 
 /**
  * @name toggle_debug
@@ -93,7 +93,7 @@ void set_log_file(FILE* fLogFile);
  * @param enabled TRUE to enable this library; FALSE to turn all messages off.
  * @remarks This library is enabled by default.
  */
-void toggle_debug(BOOL enabled);
+void ToggleDebug(BOOL enabled);
 
 /**
  * @name log_info
@@ -101,7 +101,7 @@ void toggle_debug(BOOL enabled);
  * @param message The message to be displayed, with any printf-compatible format specifiers.
  * @param ... Format arguments.
  */
-void log_info(const char* message, ...);
+void LogInfo(const char* message, ...);
 
 /**
  * @name log_warning
@@ -109,7 +109,7 @@ void log_info(const char* message, ...);
  * @param message The message to be displayed, with any printf-compatible format specifiers.
  * @param ... Format arguments.
  */
-void log_warning(const char* message, ...);
+void LogWarning(const char* message, ...);
 
 /**
  * @name log_error
@@ -117,7 +117,7 @@ void log_warning(const char* message, ...);
  * @param message The message to be displayed, with any printf-compatible format specifiers.
  * @param ... Format arguments.
  */
-void log_error(const char* message, ...);
+void LogError(const char* message, ...);
 
 /**
  * @name log_debug
@@ -125,6 +125,6 @@ void log_error(const char* message, ...);
  * @param message The message to be displayed, with any printf-compatible format specifiers.
  * @param ... Format arguments.
  */
-void log_debug(const char* message, ...);
+void LogDebug(const char* message, ...);
 
 #endif //__DEBUG_CORE_H__

@@ -18,7 +18,7 @@
 #define LOG_FORMAT		"%s %s %s\n"		// Format for fprintf to log messages
 #define TIMESTRLEN		1024				// Size of buffer for time string
 
-BOOL mute = FALSE;
+BOOL g_bIsMute = FALSE;
 
 // File handles to support writing logs to a file
 
@@ -111,6 +111,7 @@ void InterlockedCloseFile(FILE* fp) {
 		}
 
 		fclose(fp);
+		fp = NULL;
 	}
 	ReleaseLoggingMutex();
 }
@@ -132,23 +133,23 @@ void CloseLogFileHandles() {
  * @remarks Utilized by the calls to fprintf that write log messages.  This function
  * is only available internally to this source file.
  */
-char* get_current_time_string() {
-	char* s = NULL;
+char* GetCurrentTimeString() {
+	char* pszResult = NULL;
 
 	// time_t is arithmetic time type
-	time_t now;
+	time_t tNow;
 
 	// Obtain current time
 	// time() returns the current time of the system as a time_t value
-	time(&now);
+	time(&tNow);
 
-	s = (char*) malloc(TIMESTRLEN * sizeof(char));
+	pszResult = (char*) malloc(TIMESTRLEN * sizeof(char));
 
 	// Format the curernt time as a string and return it
 	//strftime(s, TIMESTRLEN, "%A, %B %d %Y ", localtime(&now));
-	strftime(s, TIMESTRLEN, "%c", localtime(&now));
+	strftime(pszResult, TIMESTRLEN, "%c", localtime(&tNow));
 
-	return s;
+	return pszResult;
 }
 
 FILE* GetErrorLogFileHandle() {
@@ -159,7 +160,7 @@ FILE* GetLogFileHandle() {
 	return g_fpLog;
 }
 
-void set_error_log_file(FILE* fpErrorLogFile) {
+void SetErrorLogFileHandle(FILE* fpErrorLogFile) {
 	CreateLogFileMutexIfNotExists();
 
 	if (NULL == g_pLogFileMutex) {
@@ -183,7 +184,7 @@ void set_error_log_file(FILE* fpErrorLogFile) {
 	ReleaseLoggingMutex();
 }
 
-void set_log_file(FILE* fpLogFile) {
+void SetLogFileHandle(FILE* fpLogFile) {
 	CreateLogFileMutexIfNotExists();
 
 	if (NULL == g_pLogFileMutex) {
@@ -208,7 +209,7 @@ void set_log_file(FILE* fpLogFile) {
 	ReleaseLoggingMutex();
 }
 
-void set_log_file_path(const char* path) {
+void SetLogFilePath(const char* pszPath) {
 	CreateLogFileMutexIfNotExists();
 
 	if (NULL == g_pLogFileMutex) {
@@ -219,13 +220,13 @@ void set_log_file_path(const char* path) {
 	{
 		/* Check path to ensure it's not blank; if it is, then stop since we have
 		 nothing to do. */
-		if (path == NULL || strlen(path) == 0 || path[0] == '\0')
+		if (pszPath == NULL || strlen(pszPath) == 0 || pszPath[0] == '\0')
 			return;
 
 		/* Attempt to open a new file for reading, writing, and appending.  Create the file
 		 if it does not already exist.  For now, we will direct all logging and error outputs
 		 to the same file. */
-		g_fpLog = g_fpErrorLog = fopen(path, "a+");
+		g_fpLog = g_fpErrorLog = fopen(pszPath, "a+");
 		if (g_fpLog == NULL) {
 			g_fpLog = stdout;
 			g_fpErrorLog = stderr;
@@ -235,11 +236,11 @@ void set_log_file_path(const char* path) {
 	ReleaseLoggingMutex();
 }
 
-void toggle_debug(BOOL enabled) {
-	mute = !enabled;
+void ToggleDebug(BOOL enabled) {
+	g_bIsMute = !enabled;
 }
 
-void write_log(FILE* fp, const char* prefix, const char* buf) {
+void WriteToLog(FILE* fp, const char* pszPrefix, const char* pszBuffer) {
 	CreateLogFileMutexIfNotExists();
 
 	if (NULL == g_pLogFileMutex) {
@@ -254,118 +255,117 @@ void write_log(FILE* fp, const char* prefix, const char* buf) {
 			return;
 		}
 
-		if (prefix == NULL || prefix[0] == '\0' || strlen(prefix) == 0) {
+		if (pszPrefix == NULL || pszPrefix[0] == '\0' || strlen(pszPrefix) == 0) {
 			ReleaseLoggingMutex();
 
 			return;
 		}
 
-		if (buf == NULL || buf[0] == '\0' || strlen(buf) == 0) {
+		if (pszBuffer == NULL || pszBuffer[0] == '\0' || strlen(pszBuffer) == 0) {
 			ReleaseLoggingMutex();
 
 			return;
 		}
 
-		char* timestring = get_current_time_string();
+		char* pszTimeString = GetCurrentTimeString();
 
-		fprintf(fp, LOG_FORMAT, timestring, prefix, buf);
+		fprintf(fp, LOG_FORMAT, pszTimeString, pszPrefix, pszBuffer);
 		fflush(fp);
 
-
-		free(timestring);
-		timestring = NULL;
+		free(pszTimeString);
+		pszTimeString = NULL;
 	}
 	ReleaseLoggingMutex();
 }
 
-void log_info(const char* message, ...) {
-	if (mute == TRUE)
+void LogInfo(const char* pszMessage, ...) {
+	if (g_bIsMute == TRUE)
 		return;
 
 	if (GetLogFileHandle() == NULL)
-		set_log_file(stdout);
+		SetLogFileHandle(stdout);
 
 	va_list args;
-	va_start(args, message);
+	va_start(args, pszMessage);
 
-	if (message == NULL || message[0] == '\0' || strlen(message) == 0) {
+	if (pszMessage == NULL || pszMessage[0] == '\0' || strlen(pszMessage) == 0) {
 		return;
 	}
 
-	char buf[LOG_BUFFER_SIZE];
+	char szLogLine[LOG_BUFFER_SIZE];
 
-	vsprintf(buf, message, args);
+	vsprintf(szLogLine, pszMessage, args);
 
-	write_log(GetLogFileHandle(), INFO_MESSAGE_PREFIX, buf);
+	WriteToLog(GetLogFileHandle(), INFO_MESSAGE_PREFIX, szLogLine);
 
 	va_end(args);
 }
 
-void log_warning(const char* message, ...) {
-	if (mute == TRUE)
+void LogWarning(const char* pszMessage, ...) {
+	if (g_bIsMute == TRUE)
 		return;
 
 	if (GetLogFileHandle() == NULL)
-		set_log_file(stdout);
+		SetLogFileHandle(stdout);
 
 	va_list args;
-	va_start(args, message);
+	va_start(args, pszMessage);
 
-	if (message == NULL || message[0] == '\0' || strlen(message) == 0) {
+	if (pszMessage == NULL || pszMessage[0] == '\0' || strlen(pszMessage) == 0) {
 		return;
 	}
 
-	char buf[LOG_BUFFER_SIZE];
+	char szLogLine[LOG_BUFFER_SIZE];
 
-	vsprintf(buf, message, args);
+	vsprintf(szLogLine, pszMessage, args);
 
-	write_log(GetLogFileHandle(), WARN_MESSAGE_PREFIX, buf);
+	WriteToLog(GetLogFileHandle(), WARN_MESSAGE_PREFIX, szLogLine);
 
 	va_end(args);
 }
 
-void log_error(const char* message, ...) {
-	if (mute == TRUE)
+void LogError(const char* pszMessage, ...) {
+	if (g_bIsMute == TRUE)
 		return;
 
 	if (GetErrorLogFileHandle() == NULL)
-		set_error_log_file(stderr);
+		SetErrorLogFileHandle(stderr);
 
 	va_list args;
-	va_start(args, message);
+	va_start(args, pszMessage);
 
-	if (message == NULL || message[0] == '\0' || strlen(message) == 0) {
+	if (pszMessage == NULL || pszMessage[0] == '\0' || strlen(pszMessage) == 0) {
 		return;
 	}
 
-	char buf[LOG_BUFFER_SIZE];
+	char szLogLine[LOG_BUFFER_SIZE];
 
-	vsprintf(buf, message, args);
+	vsprintf(szLogLine, pszMessage, args);
 
-	write_log(GetErrorLogFileHandle(), ERROR_MESSAGE_PREFIX, buf);
+	WriteToLog(GetErrorLogFileHandle(), ERROR_MESSAGE_PREFIX, szLogLine);
 
 	va_end(args);
 }
 
-void log_debug(const char* message, ...) {
-	if (mute == TRUE)
+void LogDebug(const char* pszMessage, ...) {
+	if (g_bIsMute == TRUE)
 		return;
 
 	if (GetLogFileHandle() == NULL)
-		set_log_file(stdout);
+		SetLogFileHandle(stdout);
 
 	va_list args;
-	va_start(args, message);
+	va_start(args, pszMessage);
 
-	if (message == NULL || message[0] == '\0' || strlen(message) == 0) {
+	if (pszMessage == NULL || pszMessage[0] == '\0' || strlen(pszMessage) == 0) {
 		return;
 	}
 
-	char buf[LOG_BUFFER_SIZE];
+	char szLogLine[LOG_BUFFER_SIZE];
 
-	vsprintf(buf, message, args);
+	vsprintf(szLogLine, pszMessage, args);
 
-	write_log(GetLogFileHandle(), DEBUG_MESSAGE_PREFIX, buf);
+	WriteToLog(GetLogFileHandle(), DEBUG_MESSAGE_PREFIX, szLogLine);
 
 	va_end(args);
 }
