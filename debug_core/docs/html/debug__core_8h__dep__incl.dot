@@ -1,0 +1,8 @@
+digraph "/home/bhart/git/debug_core/debug_core/include/debug_core.h"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node2 [label="/home/bhart/git/debug\l_core/debug_core/include\l/debug_core.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="/home/bhart/git/debug\l_core/debug_core/src\l/debug_core.c",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$debug__core_8c.html"];
+}
