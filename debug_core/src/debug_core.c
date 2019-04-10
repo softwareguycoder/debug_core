@@ -236,11 +236,15 @@ void SetLogFilePath(const char* pszPath) {
 	ReleaseLoggingMutex();
 }
 
-void ToggleDebug(BOOL enabled) {
-	g_bIsMute = !enabled;
+void ToggleDebug(BOOL bEnabled) {
+	g_bIsMute = !bEnabled;
 }
 
 void WriteToLog(FILE* fp, const char* pszPrefix, const char* pszBuffer) {
+	if (fp == NULL) {
+		return;
+	}
+
 	CreateLogFileMutexIfNotExists();
 
 	if (NULL == g_pLogFileMutex) {
@@ -249,19 +253,15 @@ void WriteToLog(FILE* fp, const char* pszPrefix, const char* pszBuffer) {
 
 	GetLoggingMutex();
 	{
-		if (fp == NULL) {
+		if (pszPrefix == NULL || pszPrefix[0] == '\0'
+				|| strlen(pszPrefix) == 0) {
 			ReleaseLoggingMutex();
 
 			return;
 		}
 
-		if (pszPrefix == NULL || pszPrefix[0] == '\0' || strlen(pszPrefix) == 0) {
-			ReleaseLoggingMutex();
-
-			return;
-		}
-
-		if (pszBuffer == NULL || pszBuffer[0] == '\0' || strlen(pszBuffer) == 0) {
+		if (pszBuffer == NULL || pszBuffer[0] == '\0'
+				|| strlen(pszBuffer) == 0) {
 			ReleaseLoggingMutex();
 
 			return;
@@ -288,7 +288,8 @@ void LogInfo(const char* pszMessage, ...) {
 	va_list args;
 	va_start(args, pszMessage);
 
-	if (pszMessage == NULL || pszMessage[0] == '\0' || strlen(pszMessage) == 0) {
+	if (pszMessage == NULL || pszMessage[0] == '\0'
+			|| strlen(pszMessage) == 0) {
 		return;
 	}
 
@@ -311,7 +312,8 @@ void LogWarning(const char* pszMessage, ...) {
 	va_list args;
 	va_start(args, pszMessage);
 
-	if (pszMessage == NULL || pszMessage[0] == '\0' || strlen(pszMessage) == 0) {
+	if (pszMessage == NULL || pszMessage[0] == '\0'
+			|| strlen(pszMessage) == 0) {
 		return;
 	}
 
@@ -334,7 +336,8 @@ void LogError(const char* pszMessage, ...) {
 	va_list args;
 	va_start(args, pszMessage);
 
-	if (pszMessage == NULL || pszMessage[0] == '\0' || strlen(pszMessage) == 0) {
+	if (pszMessage == NULL || pszMessage[0] == '\0'
+			|| strlen(pszMessage) == 0) {
 		return;
 	}
 
@@ -357,7 +360,8 @@ void LogDebug(const char* pszMessage, ...) {
 	va_list args;
 	va_start(args, pszMessage);
 
-	if (pszMessage == NULL || pszMessage[0] == '\0' || strlen(pszMessage) == 0) {
+	if (pszMessage == NULL || pszMessage[0] == '\0'
+			|| strlen(pszMessage) == 0) {
 		return;
 	}
 

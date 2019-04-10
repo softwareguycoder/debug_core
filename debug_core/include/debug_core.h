@@ -75,17 +75,18 @@ FILE* GetLogFileHandle();
 
 /**
  * @name set_error_log_file
- * @brief Sets the FILE pointer to be used for error logging.  Can be set to stdin, stdout, or stderr.
+ * @brief Sets the FILE pointer to be used for error logging.  Can be set to stdin, stdout, or stderr or a file.
+ * @param fpErrorLogFile FILE pointer to be used for error logging.
  * @remarks If this function is not called, then stderr is used for error logging by default.
  */
-void SetErrorLogFileHandle(FILE* fErrorLogFile);
+void SetErrorLogFileHandle(FILE* fpErrorLogFile);
 
 /**
  * @name set_log_file
  * @brief Sets the FILE pointer to be used for logging.  Can be set to stdin, stdout, or stderr.
  * @remarks If this function is not called, then stdout is used for logging by default.
  */
-void SetLogFileHandle(FILE* fLogFile);
+void SetLogFileHandle(FILE* fpLogFile);
 
 /**
  * @name toggle_debug
@@ -93,7 +94,7 @@ void SetLogFileHandle(FILE* fLogFile);
  * @param enabled TRUE to enable this library; FALSE to turn all messages off.
  * @remarks This library is enabled by default.
  */
-void ToggleDebug(BOOL enabled);
+void ToggleDebug(BOOL bEnabled);
 
 /**
  * @name log_info
@@ -101,7 +102,7 @@ void ToggleDebug(BOOL enabled);
  * @param message The message to be displayed, with any printf-compatible format specifiers.
  * @param ... Format arguments.
  */
-void LogInfo(const char* message, ...);
+void LogInfo(const char* pszMessage, ...);
 
 /**
  * @name log_warning
@@ -109,7 +110,7 @@ void LogInfo(const char* message, ...);
  * @param message The message to be displayed, with any printf-compatible format specifiers.
  * @param ... Format arguments.
  */
-void LogWarning(const char* message, ...);
+void LogWarning(const char* pszMessage, ...);
 
 /**
  * @name log_error
@@ -117,7 +118,7 @@ void LogWarning(const char* message, ...);
  * @param message The message to be displayed, with any printf-compatible format specifiers.
  * @param ... Format arguments.
  */
-void LogError(const char* message, ...);
+void LogError(const char* pszMessage, ...);
 
 /**
  * @name log_debug
@@ -125,6 +126,6 @@ void LogError(const char* message, ...);
  * @param message The message to be displayed, with any printf-compatible format specifiers.
  * @param ... Format arguments.
  */
-void LogDebug(const char* message, ...);
+void LogDebug(const char* pszMessage, ...);
 
 #endif //__DEBUG_CORE_H__
