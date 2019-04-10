@@ -125,31 +125,37 @@ Functions</h2></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>Closes the log file handles.</p>
 <dl class="section remark"><dt>Remarks</dt><dd>Call this function any time you are logging to disk instead of STDOUT/STDERR (the default). </dd></dl>
 </div></td></tr>
-<tr class="memitem:a8dc15ce7f05516e17d1d2357a3fdffcc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8h.html#a8dc15ce7f05516e17d1d2357a3fdffcc">close_log_file_handles</a> ()</td></tr>
-<tr class="separator:a8dc15ce7f05516e17d1d2357a3fdffcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c1a9be8c6e43bbb0a09b493d1d46d86"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8h.html#a8c1a9be8c6e43bbb0a09b493d1d46d86">CloseLogFileHandles</a> ()</td></tr>
+<tr class="separator:a8c1a9be8c6e43bbb0a09b493d1d46d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">get_error_log_file_handle</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>Gets a reference to the FILE pointer that is in use for error logging. </p>
 </div></td></tr>
-<tr class="memitem:ae2e25848e6b6dc2f4ed28a880a9b77b7"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8h.html#ae2e25848e6b6dc2f4ed28a880a9b77b7">get_error_log_file_handle</a> ()</td></tr>
-<tr class="separator:ae2e25848e6b6dc2f4ed28a880a9b77b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95ba2789ab6a2e7c4b5fc591140731c8"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8h.html#a95ba2789ab6a2e7c4b5fc591140731c8">GetErrorLogFileHandle</a> ()</td></tr>
+<tr class="separator:a95ba2789ab6a2e7c4b5fc591140731c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">get_log_file_handle</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>Gets a reference to the FILE pointer that is in use for logging.</p>
 <dl class="section return"><dt>Returns</dt><dd>FILE pointer to the file open for logging. Can be set to stdin, stdout, or stderr. </dd></dl>
 </div></td></tr>
-<tr class="memitem:a6a27ec1dab451acad7a3a8faa38400a5"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8h.html#a6a27ec1dab451acad7a3a8faa38400a5">get_log_file_handle</a> ()</td></tr>
-<tr class="separator:a6a27ec1dab451acad7a3a8faa38400a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b4c4f23f2f5394458c578193b40a338"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8h.html#a2b4c4f23f2f5394458c578193b40a338">GetLogFileHandle</a> ()</td></tr>
+<tr class="separator:a2b4c4f23f2f5394458c578193b40a338"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">set_error_log_file</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>Sets the FILE pointer to be used for error logging. Can be set to stdin, stdout, or stderr.</p>
+<tr><td colspan="2"><div class="groupText"><p>Sets the FILE pointer to be used for error logging. Can be set to stdin, stdout, or stderr or a file.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fpErrorLogFile</td><td>FILE pointer to be used for error logging. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section remark"><dt>Remarks</dt><dd>If this function is not called, then stderr is used for error logging by default. </dd></dl>
 </div></td></tr>
-<tr class="memitem:ae2ca940ea8cb77dcc43af83d3d7036f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8h.html#ae2ca940ea8cb77dcc43af83d3d7036f2">set_error_log_file</a> (FILE *fErrorLogFile)</td></tr>
-<tr class="separator:ae2ca940ea8cb77dcc43af83d3d7036f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77356ddcefd5ac3457d104008a3cbc00"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8h.html#a77356ddcefd5ac3457d104008a3cbc00">SetErrorLogFileHandle</a> (FILE *fpErrorLogFile)</td></tr>
+<tr class="separator:a77356ddcefd5ac3457d104008a3cbc00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">set_log_file</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>Sets the FILE pointer to be used for logging. Can be set to stdin, stdout, or stderr.</p>
 <dl class="section remark"><dt>Remarks</dt><dd>If this function is not called, then stdout is used for logging by default. </dd></dl>
 </div></td></tr>
-<tr class="memitem:aa824649e6cdaba66cff2e15eafde5574"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8h.html#aa824649e6cdaba66cff2e15eafde5574">set_log_file</a> (FILE *fLogFile)</td></tr>
-<tr class="separator:aa824649e6cdaba66cff2e15eafde5574"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8638e2224c5d231473ececd824e2a06d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8h.html#a8638e2224c5d231473ececd824e2a06d">SetLogFileHandle</a> (FILE *fpLogFile)</td></tr>
+<tr class="separator:a8638e2224c5d231473ececd824e2a06d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">toggle_debug</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>Turns this library's messages on or off.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -160,8 +166,8 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section remark"><dt>Remarks</dt><dd>This library is enabled by default. </dd></dl>
 </div></td></tr>
-<tr class="memitem:a32b1c84ffb8e431c92ff38194294f01e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8h.html#a32b1c84ffb8e431c92ff38194294f01e">toggle_debug</a> (BOOL enabled)</td></tr>
-<tr class="separator:a32b1c84ffb8e431c92ff38194294f01e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c727ba7f1c0acf94b9d1b1ef3a36414"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8h.html#a6c727ba7f1c0acf94b9d1b1ef3a36414">ToggleDebug</a> (BOOL bEnabled)</td></tr>
+<tr class="separator:a6c727ba7f1c0acf94b9d1b1ef3a36414"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">log_info</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>Logs a formatted [INFO] message to standard output.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -172,8 +178,8 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 </div></td></tr>
-<tr class="memitem:af4431e39155e80c53e1f9aab22d5a0ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8h.html#af4431e39155e80c53e1f9aab22d5a0ef">log_info</a> (const char *message,...)</td></tr>
-<tr class="separator:af4431e39155e80c53e1f9aab22d5a0ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b9e93aecc98dda940b1624a0fb4093f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8h.html#a7b9e93aecc98dda940b1624a0fb4093f">LogInfo</a> (const char *pszMessage,...)</td></tr>
+<tr class="separator:a7b9e93aecc98dda940b1624a0fb4093f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">log_warning</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>Logs a formatted [WARN] message to standard output.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -184,8 +190,8 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 </div></td></tr>
-<tr class="memitem:a06b347c50387b36e0ff903e76be1c1d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8h.html#a06b347c50387b36e0ff903e76be1c1d4">log_warning</a> (const char *message,...)</td></tr>
-<tr class="separator:a06b347c50387b36e0ff903e76be1c1d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84ed44c7e3494e7a0a0b683124b725c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8h.html#a84ed44c7e3494e7a0a0b683124b725c7">LogWarning</a> (const char *pszMessage,...)</td></tr>
+<tr class="separator:a84ed44c7e3494e7a0a0b683124b725c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">log_error</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>Logs a formatted [ERROR] message to standard output.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -196,8 +202,8 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 </div></td></tr>
-<tr class="memitem:a0327644dae0a0a5d4bdc8f7b6f54e31e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8h.html#a0327644dae0a0a5d4bdc8f7b6f54e31e">log_error</a> (const char *message,...)</td></tr>
-<tr class="separator:a0327644dae0a0a5d4bdc8f7b6f54e31e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a762c4340c178af8b79cea1b918aea045"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8h.html#a762c4340c178af8b79cea1b918aea045">LogError</a> (const char *pszMessage,...)</td></tr>
+<tr class="separator:a762c4340c178af8b79cea1b918aea045"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">log_debug</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>Logs a formatted [DEBUG] message to standard output.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -208,8 +214,8 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 </div></td></tr>
-<tr class="memitem:a9845e8157cc395cb8f3ed1761048e4f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8h.html#a9845e8157cc395cb8f3ed1761048e4f3">log_debug</a> (const char *message,...)</td></tr>
-<tr class="separator:a9845e8157cc395cb8f3ed1761048e4f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a108c14cdbf2bba5a30823100def3abf5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8h.html#a108c14cdbf2bba5a30823100def3abf5">LogDebug</a> (const char *pszMessage,...)</td></tr>
+<tr class="separator:a108c14cdbf2bba5a30823100def3abf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a7d5272dfd8ec03ff20c5434628acf51d"></a>
@@ -309,14 +315,14 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a8dc15ce7f05516e17d1d2357a3fdffcc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8dc15ce7f05516e17d1d2357a3fdffcc">&#9670;&nbsp;</a></span>close_log_file_handles()</h2>
+<a id="a8c1a9be8c6e43bbb0a09b493d1d46d86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c1a9be8c6e43bbb0a09b493d1d46d86">&#9670;&nbsp;</a></span>CloseLogFileHandles()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void close_log_file_handles </td>
+          <td class="memname">void CloseLogFileHandles </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -324,18 +330,18 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00118">118</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00119">119</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
-<a id="ae2e25848e6b6dc2f4ed28a880a9b77b7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae2e25848e6b6dc2f4ed28a880a9b77b7">&#9670;&nbsp;</a></span>get_error_log_file_handle()</h2>
+<a id="a95ba2789ab6a2e7c4b5fc591140731c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95ba2789ab6a2e7c4b5fc591140731c8">&#9670;&nbsp;</a></span>GetErrorLogFileHandle()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">FILE* get_error_log_file_handle </td>
+          <td class="memname">FILE* GetErrorLogFileHandle </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -343,18 +349,18 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00154">154</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00155">155</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
-<a id="a6a27ec1dab451acad7a3a8faa38400a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6a27ec1dab451acad7a3a8faa38400a5">&#9670;&nbsp;</a></span>get_log_file_handle()</h2>
+<a id="a2b4c4f23f2f5394458c578193b40a338"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b4c4f23f2f5394458c578193b40a338">&#9670;&nbsp;</a></span>GetLogFileHandle()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">FILE* get_log_file_handle </td>
+          <td class="memname">FILE* GetLogFileHandle </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -362,21 +368,21 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00158">158</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00159">159</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
-<a id="a9845e8157cc395cb8f3ed1761048e4f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9845e8157cc395cb8f3ed1761048e4f3">&#9670;&nbsp;</a></span>log_debug()</h2>
+<a id="a108c14cdbf2bba5a30823100def3abf5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a108c14cdbf2bba5a30823100def3abf5">&#9670;&nbsp;</a></span>LogDebug()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void log_debug </td>
+          <td class="memname">void LogDebug </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>message</em>, </td>
+          <td class="paramname"><em>pszMessage</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -392,21 +398,21 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00350">350</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00353">353</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
-<a id="a0327644dae0a0a5d4bdc8f7b6f54e31e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0327644dae0a0a5d4bdc8f7b6f54e31e">&#9670;&nbsp;</a></span>log_error()</h2>
+<a id="a762c4340c178af8b79cea1b918aea045"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a762c4340c178af8b79cea1b918aea045">&#9670;&nbsp;</a></span>LogError()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void log_error </td>
+          <td class="memname">void LogError </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>message</em>, </td>
+          <td class="paramname"><em>pszMessage</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -422,21 +428,21 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00327">327</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00329">329</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
-<a id="af4431e39155e80c53e1f9aab22d5a0ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af4431e39155e80c53e1f9aab22d5a0ef">&#9670;&nbsp;</a></span>log_info()</h2>
+<a id="a7b9e93aecc98dda940b1624a0fb4093f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b9e93aecc98dda940b1624a0fb4093f">&#9670;&nbsp;</a></span>LogInfo()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void log_info </td>
+          <td class="memname">void LogInfo </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>message</em>, </td>
+          <td class="paramname"><em>pszMessage</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -456,17 +462,17 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a06b347c50387b36e0ff903e76be1c1d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a06b347c50387b36e0ff903e76be1c1d4">&#9670;&nbsp;</a></span>log_warning()</h2>
+<a id="a84ed44c7e3494e7a0a0b683124b725c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84ed44c7e3494e7a0a0b683124b725c7">&#9670;&nbsp;</a></span>LogWarning()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void log_warning </td>
+          <td class="memname">void LogWarning </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>message</em>, </td>
+          <td class="paramname"><em>pszMessage</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -482,67 +488,67 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00304">304</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00305">305</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
-<a id="ae2ca940ea8cb77dcc43af83d3d7036f2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae2ca940ea8cb77dcc43af83d3d7036f2">&#9670;&nbsp;</a></span>set_error_log_file()</h2>
+<a id="a77356ddcefd5ac3457d104008a3cbc00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77356ddcefd5ac3457d104008a3cbc00">&#9670;&nbsp;</a></span>SetErrorLogFileHandle()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void set_error_log_file </td>
+          <td class="memname">void SetErrorLogFileHandle </td>
           <td>(</td>
           <td class="paramtype">FILE *&#160;</td>
-          <td class="paramname"><em>fErrorLogFile</em></td><td>)</td>
+          <td class="paramname"><em>fpErrorLogFile</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00162">162</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00163">163</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
-<a id="aa824649e6cdaba66cff2e15eafde5574"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa824649e6cdaba66cff2e15eafde5574">&#9670;&nbsp;</a></span>set_log_file()</h2>
+<a id="a8638e2224c5d231473ececd824e2a06d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8638e2224c5d231473ececd824e2a06d">&#9670;&nbsp;</a></span>SetLogFileHandle()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void set_log_file </td>
+          <td class="memname">void SetLogFileHandle </td>
           <td>(</td>
           <td class="paramtype">FILE *&#160;</td>
-          <td class="paramname"><em>fLogFile</em></td><td>)</td>
+          <td class="paramname"><em>fpLogFile</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00186">186</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00187">187</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
-<a id="a32b1c84ffb8e431c92ff38194294f01e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a32b1c84ffb8e431c92ff38194294f01e">&#9670;&nbsp;</a></span>toggle_debug()</h2>
+<a id="a6c727ba7f1c0acf94b9d1b1ef3a36414"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c727ba7f1c0acf94b9d1b1ef3a36414">&#9670;&nbsp;</a></span>ToggleDebug()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void toggle_debug </td>
+          <td class="memname">void ToggleDebug </td>
           <td>(</td>
           <td class="paramtype">BOOL&#160;</td>
-          <td class="paramname"><em>enabled</em></td><td>)</td>
+          <td class="paramname"><em>bEnabled</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00238">238</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00239">239</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
