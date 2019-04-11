@@ -295,7 +295,7 @@ void LogInfo(const char* pszMessage, ...) {
 
 	char szLogLine[LOG_BUFFER_SIZE];
 
-	vsprintf(szLogLine, pszMessage, args);
+	vsprintf(szLogLine, TrimNewLine(pszMessage), args);
 
 	WriteToLog(GetLogFileHandle(), INFO_MESSAGE_PREFIX, szLogLine);
 
@@ -319,7 +319,7 @@ void LogWarning(const char* pszMessage, ...) {
 
 	char szLogLine[LOG_BUFFER_SIZE];
 
-	vsprintf(szLogLine, pszMessage, args);
+	vsprintf(szLogLine, TrimNewLine(pszMessage), args);
 
 	WriteToLog(GetLogFileHandle(), WARN_MESSAGE_PREFIX, szLogLine);
 
@@ -343,7 +343,7 @@ void LogError(const char* pszMessage, ...) {
 
 	char szLogLine[LOG_BUFFER_SIZE];
 
-	vsprintf(szLogLine, pszMessage, args);
+	vsprintf(szLogLine, TrimNewLine(pszMessage), args);
 
 	WriteToLog(GetErrorLogFileHandle(), ERROR_MESSAGE_PREFIX, szLogLine);
 
@@ -367,7 +367,7 @@ void LogDebug(const char* pszMessage, ...) {
 
 	char szLogLine[LOG_BUFFER_SIZE];
 
-	vsprintf(szLogLine, pszMessage, args);
+	vsprintf(szLogLine, TrimNewLine(pszMessage), args);
 
 	WriteToLog(GetLogFileHandle(), DEBUG_MESSAGE_PREFIX, szLogLine);
 

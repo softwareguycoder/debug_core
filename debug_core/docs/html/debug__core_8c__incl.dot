@@ -19,8 +19,10 @@ digraph "/home/bhart/git/debug_core/debug_core/src/debug_core.c"
   Node7 [label="unistd.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
   Node1 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node8 [label="pthread.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node0 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node9 [label="debug_core.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$debug__core_8h.html"];
-  Node9 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node10 [label="../../common_core/common\l_core/include/common_core.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="../../../common_core\l/common_core/include\l/common_core.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node0 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="debug_core.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$debug__core_8h.html"];
+  Node10 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="../../common_core/common\l_core/include/common_core.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
 }
