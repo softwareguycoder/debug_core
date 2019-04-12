@@ -279,6 +279,10 @@ void WriteToLog(FILE* fp, const char* pszPrefix, const char* pszBuffer) {
 }
 
 void LogInfo(const char* pszMessage, ...) {
+	if (IsNullOrWhiteSpace(pszMessage)) {
+		return;
+	}
+
 	if (g_bIsMute == TRUE)
 		return;
 
@@ -288,14 +292,13 @@ void LogInfo(const char* pszMessage, ...) {
 	va_list args;
 	va_start(args, pszMessage);
 
-	if (pszMessage == NULL || pszMessage[0] == '\0'
-			|| strlen(pszMessage) == 0) {
-		return;
-	}
-
 	char szLogLine[LOG_BUFFER_SIZE];
 
-	vsprintf(szLogLine, TrimNewLine(pszMessage), args);
+	const int MESSAGE_LEN = strlen(pszMessage) + 1;
+	char szTrimmedMessage[MESSAGE_LEN];
+	Trim(szTrimmedMessage, MESSAGE_LEN, pszMessage);
+
+	vsprintf(szLogLine, szTrimmedMessage, args);
 
 	WriteToLog(GetLogFileHandle(), INFO_MESSAGE_PREFIX, szLogLine);
 
@@ -303,6 +306,10 @@ void LogInfo(const char* pszMessage, ...) {
 }
 
 void LogWarning(const char* pszMessage, ...) {
+	if (IsNullOrWhiteSpace(pszMessage)) {
+		return;
+	}
+
 	if (g_bIsMute == TRUE)
 		return;
 
@@ -312,14 +319,13 @@ void LogWarning(const char* pszMessage, ...) {
 	va_list args;
 	va_start(args, pszMessage);
 
-	if (pszMessage == NULL || pszMessage[0] == '\0'
-			|| strlen(pszMessage) == 0) {
-		return;
-	}
-
 	char szLogLine[LOG_BUFFER_SIZE];
 
-	vsprintf(szLogLine, TrimNewLine(pszMessage), args);
+	const int MESSAGE_LEN = strlen(pszMessage) + 1;
+	char szTrimmedMessage[MESSAGE_LEN];
+	Trim(szTrimmedMessage, MESSAGE_LEN, pszMessage);
+
+	vsprintf(szLogLine, szTrimmedMessage, args);
 
 	WriteToLog(GetLogFileHandle(), WARN_MESSAGE_PREFIX, szLogLine);
 
@@ -327,6 +333,10 @@ void LogWarning(const char* pszMessage, ...) {
 }
 
 void LogError(const char* pszMessage, ...) {
+	if (IsNullOrWhiteSpace(pszMessage)) {
+		return;
+	}
+
 	if (g_bIsMute == TRUE)
 		return;
 
@@ -336,14 +346,13 @@ void LogError(const char* pszMessage, ...) {
 	va_list args;
 	va_start(args, pszMessage);
 
-	if (pszMessage == NULL || pszMessage[0] == '\0'
-			|| strlen(pszMessage) == 0) {
-		return;
-	}
-
 	char szLogLine[LOG_BUFFER_SIZE];
 
-	vsprintf(szLogLine, TrimNewLine(pszMessage), args);
+	const int MESSAGE_LEN = strlen(pszMessage) + 1;
+	char szTrimmedMessage[MESSAGE_LEN];
+	Trim(szTrimmedMessage, MESSAGE_LEN, pszMessage);
+
+	vsprintf(szLogLine, szTrimmedMessage, args);
 
 	WriteToLog(GetErrorLogFileHandle(), ERROR_MESSAGE_PREFIX, szLogLine);
 
@@ -351,6 +360,10 @@ void LogError(const char* pszMessage, ...) {
 }
 
 void LogDebug(const char* pszMessage, ...) {
+	if (IsNullOrWhiteSpace(pszMessage)) {
+		return;
+	}
+
 	if (g_bIsMute == TRUE)
 		return;
 
@@ -360,14 +373,13 @@ void LogDebug(const char* pszMessage, ...) {
 	va_list args;
 	va_start(args, pszMessage);
 
-	if (pszMessage == NULL || pszMessage[0] == '\0'
-			|| strlen(pszMessage) == 0) {
-		return;
-	}
-
 	char szLogLine[LOG_BUFFER_SIZE];
 
-	vsprintf(szLogLine, TrimNewLine(pszMessage), args);
+	const int MESSAGE_LEN = strlen(pszMessage) + 1;
+	char szTrimmedMessage[MESSAGE_LEN];
+	Trim(szTrimmedMessage, MESSAGE_LEN, pszMessage);
+
+	vsprintf(szLogLine, szTrimmedMessage, args);
 
 	WriteToLog(GetLogFileHandle(), DEBUG_MESSAGE_PREFIX, szLogLine);
 
