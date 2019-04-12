@@ -14,9 +14,9 @@
 #include "stdafx.h"
 #include "debug_core.h"
 
-#define LOG_BUFFER_SIZE	4096
+#define LOG_BUFFER_SIZE	1024
 #define LOG_FORMAT		"%s %s %s\n"		// Format for fprintf to log messages
-#define TIMESTRLEN		1024				// Size of buffer for time string
+#define TIMESTRLEN		32				// Size of buffer for time string
 
 BOOL g_bIsMute = FALSE;
 
@@ -143,11 +143,11 @@ char* GetCurrentTimeString() {
 	// time() returns the current time of the system as a time_t value
 	time(&tNow);
 
-	pszResult = (char*) malloc(TIMESTRLEN * sizeof(char));
+	pszResult = (char*) malloc((TIMESTRLEN + 1) * sizeof(char));
 
 	// Format the curernt time as a string and return it
 	//strftime(s, TIMESTRLEN, "%A, %B %d %Y ", localtime(&now));
-	strftime(pszResult, TIMESTRLEN, "%c", localtime(&tNow));
+	strftime(pszResult, TIMESTRLEN + 1, "%c", localtime(&tNow));
 
 	return pszResult;
 }
@@ -292,15 +292,17 @@ void LogInfo(const char* pszMessage, ...) {
 	va_list args;
 	va_start(args, pszMessage);
 
-	char szLogLine[LOG_BUFFER_SIZE];
+	char szLogLine[LOG_BUFFER_SIZE + 1];
+	memset(szLogLine, 0, LOG_BUFFER_SIZE + 1);
 
-	const int MESSAGE_LEN = strlen(pszMessage) + 1;
-	char szTrimmedMessage[MESSAGE_LEN];
-	Trim(szTrimmedMessage, MESSAGE_LEN, pszMessage);
+	vsprintf(szLogLine, pszMessage, args);
 
-	vsprintf(szLogLine, szTrimmedMessage, args);
+	char szTrimmedLogLine[LOG_BUFFER_SIZE + 1];
+	memset(szTrimmedLogLine, 0, LOG_BUFFER_SIZE + 1);
 
-	WriteToLog(GetLogFileHandle(), INFO_MESSAGE_PREFIX, szLogLine);
+	Trim(szTrimmedLogLine, LOG_BUFFER_SIZE + 1, szLogLine);
+
+	WriteToLog(GetLogFileHandle(), INFO_MESSAGE_PREFIX, szTrimmedLogLine);
 
 	va_end(args);
 }
@@ -319,15 +321,17 @@ void LogWarning(const char* pszMessage, ...) {
 	va_list args;
 	va_start(args, pszMessage);
 
-	char szLogLine[LOG_BUFFER_SIZE];
+	char szLogLine[LOG_BUFFER_SIZE + 1];
+	memset(szLogLine, 0, LOG_BUFFER_SIZE + 1);
 
-	const int MESSAGE_LEN = strlen(pszMessage) + 1;
-	char szTrimmedMessage[MESSAGE_LEN];
-	Trim(szTrimmedMessage, MESSAGE_LEN, pszMessage);
+	vsprintf(szLogLine, pszMessage, args);
 
-	vsprintf(szLogLine, szTrimmedMessage, args);
+	char szTrimmedLogLine[LOG_BUFFER_SIZE + 1];
+	memset(szTrimmedLogLine, 0, LOG_BUFFER_SIZE + 1);
 
-	WriteToLog(GetLogFileHandle(), WARN_MESSAGE_PREFIX, szLogLine);
+	Trim(szTrimmedLogLine, LOG_BUFFER_SIZE + 1, szLogLine);
+
+	WriteToLog(GetLogFileHandle(), WARN_MESSAGE_PREFIX, szTrimmedLogLine);
 
 	va_end(args);
 }
@@ -346,15 +350,17 @@ void LogError(const char* pszMessage, ...) {
 	va_list args;
 	va_start(args, pszMessage);
 
-	char szLogLine[LOG_BUFFER_SIZE];
+	char szLogLine[LOG_BUFFER_SIZE + 1];
+	memset(szLogLine, 0, LOG_BUFFER_SIZE + 1);
 
-	const int MESSAGE_LEN = strlen(pszMessage) + 1;
-	char szTrimmedMessage[MESSAGE_LEN];
-	Trim(szTrimmedMessage, MESSAGE_LEN, pszMessage);
+	vsprintf(szLogLine, pszMessage, args);
 
-	vsprintf(szLogLine, szTrimmedMessage, args);
+	char szTrimmedLogLine[LOG_BUFFER_SIZE + 1];
+	memset(szTrimmedLogLine, 0, LOG_BUFFER_SIZE + 1);
 
-	WriteToLog(GetErrorLogFileHandle(), ERROR_MESSAGE_PREFIX, szLogLine);
+	Trim(szTrimmedLogLine, LOG_BUFFER_SIZE + 1, szLogLine);
+
+	WriteToLog(GetErrorLogFileHandle(), ERROR_MESSAGE_PREFIX, szTrimmedLogLine);
 
 	va_end(args);
 }
@@ -373,15 +379,17 @@ void LogDebug(const char* pszMessage, ...) {
 	va_list args;
 	va_start(args, pszMessage);
 
-	char szLogLine[LOG_BUFFER_SIZE];
+	char szLogLine[LOG_BUFFER_SIZE + 1];
+	memset(szLogLine, 0, LOG_BUFFER_SIZE + 1);
 
-	const int MESSAGE_LEN = strlen(pszMessage) + 1;
-	char szTrimmedMessage[MESSAGE_LEN];
-	Trim(szTrimmedMessage, MESSAGE_LEN, pszMessage);
+	vsprintf(szLogLine, pszMessage, args);
 
-	vsprintf(szLogLine, szTrimmedMessage, args);
+	char szTrimmedLogLine[LOG_BUFFER_SIZE + 1];
+	memset(szTrimmedLogLine, 0, LOG_BUFFER_SIZE + 1);
 
-	WriteToLog(GetLogFileHandle(), DEBUG_MESSAGE_PREFIX, szLogLine);
+	Trim(szTrimmedLogLine, LOG_BUFFER_SIZE + 1, szLogLine);
+
+	WriteToLog(GetLogFileHandle(), DEBUG_MESSAGE_PREFIX, szTrimmedLogLine);
 
 	va_end(args);
 }
