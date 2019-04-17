@@ -96,6 +96,8 @@ void SetLogFileHandle(FILE* fpLogFile);
  */
 void ToggleDebug(BOOL bEnabled);
 
+void LogInfoToConsoleAndScreen(const char* pszMessage, ...);
+
 /**
  * @name log_info
  * @brief Logs a formatted [INFO] message to standard output.

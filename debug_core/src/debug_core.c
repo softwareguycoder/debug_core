@@ -278,6 +278,27 @@ void WriteToLog(FILE* fp, const char* pszPrefix, const char* pszBuffer) {
 	ReleaseLoggingMutex();
 }
 
+void LogInfoToConsoleAndScreen(const char* pszMessage, ...) {
+    if (IsNullOrWhiteSpace(pszMessage)) {
+        return;
+    }
+
+    if (GetLogFileHandle() == NULL){
+        SetLogFileHandle(stdout);
+    }
+
+    va_list args;
+    va_start(args, pszMessage);
+
+    LogInfo(pszMessage, args);
+
+    if (GetLogFileHandle() != stdout) {
+        fprintf(stdout, pszMessage, args);
+    }
+
+    va_end(args);
+}
+
 void LogInfo(const char* pszMessage, ...) {
 	if (IsNullOrWhiteSpace(pszMessage)) {
 		return;
