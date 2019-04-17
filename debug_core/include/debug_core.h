@@ -96,7 +96,7 @@ void SetLogFileHandle(FILE* fpLogFile);
  */
 void ToggleDebug(BOOL bEnabled);
 
-void LogInfoToConsoleAndScreen(const char* pszMessage, ...);
+void LogInfoToFileAndScreen(const char* pszMessage, ...);
 
 /**
  * @name log_info

@@ -278,7 +278,7 @@ void WriteToLog(FILE* fp, const char* pszPrefix, const char* pszBuffer) {
 	ReleaseLoggingMutex();
 }
 
-void LogInfoToConsoleAndScreen(const char* pszMessage, ...) {
+void LogInfoToFileAndScreen(const char* pszMessage, ...) {
     if (IsNullOrWhiteSpace(pszMessage)) {
         return;
     }
