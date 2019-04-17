@@ -1,9 +1,4 @@
-/*
- * debug.h
- *
- *  Created on: Jul 13, 2018
- *      Author: bhart
- */
+// debug.h - Functions to provide logging support
 
 #ifndef __DEBUG_CORE_H__
 #define __DEBUG_CORE_H__
