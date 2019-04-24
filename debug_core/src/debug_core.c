@@ -283,14 +283,28 @@ void LogInfoToFileAndScreen(const char* pszMessage, ...) {
         return;
     }
 
-    if (GetLogFileHandle() == NULL){
+    if (g_bIsMute == TRUE) {
+        return;
+    }
+
+    if (GetLogFileHandle() == NULL) {
         SetLogFileHandle(stdout);
     }
 
     va_list args;
     va_start(args, pszMessage);
 
-    LogInfo(pszMessage, args);
+    char szLogLine[LOG_BUFFER_SIZE + 1];
+    memset(szLogLine, 0, LOG_BUFFER_SIZE + 1);
+
+    vsprintf(szLogLine, pszMessage, args);
+
+    char szTrimmedLogLine[LOG_BUFFER_SIZE + 1];
+    memset(szTrimmedLogLine, 0, LOG_BUFFER_SIZE + 1);
+
+    Trim(szTrimmedLogLine, LOG_BUFFER_SIZE + 1, szLogLine);
+
+    WriteToLog(GetLogFileHandle(), INFO_MESSAGE_PREFIX, szTrimmedLogLine);
 
     if (GetLogFileHandle() != stdout) {
         fprintf(stdout, pszMessage, args);
@@ -307,8 +321,9 @@ void LogInfo(const char* pszMessage, ...) {
 	if (g_bIsMute == TRUE)
 		return;
 
-	if (GetLogFileHandle() == NULL)
+	if (GetLogFileHandle() == NULL) {
 		SetLogFileHandle(stdout);
+	}
 
 	va_list args;
 	va_start(args, pszMessage);
