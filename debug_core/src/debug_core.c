@@ -125,6 +125,21 @@ void CloseLogFileHandles() {
 	/* Close the g_fpErrorLog file handle, if and only if it is not
 	 * already referencing standard error, or if it is non-NULL. */
 	InterlockedCloseFile(g_fpErrorLog);
+
+
+}
+
+void DestroyLoggingMutex() {
+  if (NULL == g_pLogFileMutex) {
+    return;
+  }
+
+  /* Clean up the logging mutex. */
+  pthread_mutex_destroy(g_pLogFileMutex);
+
+  /* Release system memory */
+  free(g_pLogFileMutex);
+  g_pLogFileMutex = NULL;
 }
 
 /**

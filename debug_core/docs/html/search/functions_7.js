@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['writetolog',['WriteToLog',['../debug__core_8c.html#a17a671f0cf91cb17f1ca4333cd0e16ec',1,'debug_core.c']]]
+  ['toggledebug',['ToggleDebug',['../debug__core_8h.html#a6c727ba7f1c0acf94b9d1b1ef3a36414',1,'ToggleDebug(BOOL bEnabled):&#160;debug_core.c'],['../debug__core_8c.html#a6c727ba7f1c0acf94b9d1b1ef3a36414',1,'ToggleDebug(BOOL bEnabled):&#160;debug_core.c']]]
 ];

@@ -56,6 +56,13 @@
 void CloseLogFileHandles();
 
 /**
+ * @name DestroyLoggingMutex
+ * @brief Releases operating system resources consumed by the logging mutex.
+ * @remarks Call this before your program terminates.
+ */
+void DestroyLoggingMutex();
+
+/**
  * @name get_error_log_file_handle
  * @brief Gets a reference to the FILE pointer that is in use for error logging.
  */

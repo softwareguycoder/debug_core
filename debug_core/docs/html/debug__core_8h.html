@@ -127,6 +127,12 @@ Functions</h2></td></tr>
 </div></td></tr>
 <tr class="memitem:a8c1a9be8c6e43bbb0a09b493d1d46d86"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8h.html#a8c1a9be8c6e43bbb0a09b493d1d46d86">CloseLogFileHandles</a> ()</td></tr>
 <tr class="separator:a8c1a9be8c6e43bbb0a09b493d1d46d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">DestroyLoggingMutex</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Releases operating system resources consumed by the logging mutex.</p>
+<dl class="section remark"><dt>Remarks</dt><dd>Call this before your program terminates. </dd></dl>
+</div></td></tr>
+<tr class="memitem:a09e73d25ac00b3d729ce5aab76feaa23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8h.html#a09e73d25ac00b3d729ce5aab76feaa23">DestroyLoggingMutex</a> ()</td></tr>
+<tr class="separator:a09e73d25ac00b3d729ce5aab76feaa23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">get_error_log_file_handle</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p>Gets a reference to the FILE pointer that is in use for error logging. </p>
 </div></td></tr>
@@ -336,6 +342,25 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a09e73d25ac00b3d729ce5aab76feaa23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09e73d25ac00b3d729ce5aab76feaa23">&#9670;&nbsp;</a></span>DestroyLoggingMutex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DestroyLoggingMutex </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00132">132</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+
+</div>
+</div>
 <a id="a95ba2789ab6a2e7c4b5fc591140731c8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a95ba2789ab6a2e7c4b5fc591140731c8">&#9670;&nbsp;</a></span>GetErrorLogFileHandle()</h2>
 
@@ -351,7 +376,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00155">155</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00170">170</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -370,7 +395,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00159">159</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00174">174</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -400,7 +425,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00369">369</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00384">384</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -430,7 +455,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00340">340</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00355">355</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -460,7 +485,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00281">281</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00296">296</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -518,7 +543,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00311">311</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00326">326</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -538,7 +563,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00163">163</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00178">178</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -558,7 +583,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00187">187</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00202">202</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -578,7 +603,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00239">239</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00254">254</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
