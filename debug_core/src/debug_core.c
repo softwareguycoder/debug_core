@@ -22,34 +22,34 @@ BOOL g_bIsMute = FALSE;
 
 // File handles to support writing logs to a file
 
-FILE* g_fpLog;             // File handle for logging messages other than errors
+FILE* g_fpLog;            // File handle for logging messages other than errors
 FILE* g_fpErrorLog;                         // File handle for logging errors
 
-pthread_mutex_t* g_pLogFileMutex;            // Mutex for accessing the log file
+pthread_mutex_t* g_pLogFileMutex;           // Mutex for accessing the log file
 
 void GetLoggingMutex() {
-	if (NULL == g_pLogFileMutex) {
-		return;
-	}
+  if (NULL == g_pLogFileMutex) {
+    return;
+  }
 
-	int nResult = pthread_mutex_lock(g_pLogFileMutex);
-	if (OK != nResult) {
-		fprintf(stderr,
-				"debug_core: Failed to obtain lock on mutex used for logging.\n");
-		exit(ERROR);
-	}
+  int nResult = pthread_mutex_lock(g_pLogFileMutex);
+  if (OK != nResult) {
+    fprintf(stderr,
+        "debug_core: Failed to obtain lock on mutex used for logging.\n");
+    exit(ERROR);
+  }
 }
 
 void ReleaseLoggingMutex() {
-	if (NULL == g_pLogFileMutex) {
-		return;
-	}
+  if (NULL == g_pLogFileMutex) {
+    return;
+  }
 
-	int nResult = pthread_mutex_unlock(g_pLogFileMutex);
-	if (OK != nResult) {
-		fprintf(stderr, "debug_core: Failed to release the log file mutex.\n");
-		exit(ERROR);
-	}
+  int nResult = pthread_mutex_unlock(g_pLogFileMutex);
+  if (OK != nResult) {
+    fprintf(stderr, "debug_core: Failed to release the log file mutex.\n");
+    exit(ERROR);
+  }
 }
 
 /**
@@ -57,34 +57,34 @@ void ReleaseLoggingMutex() {
  */
 void CreateLogFileMutexIfNotExists() {
 
-	if (NULL != g_pLogFileMutex) {
-		return;
-	}
+  if (NULL != g_pLogFileMutex) {
+    return;
+  }
 
-	/* If the global g_pLogFileMutex reference is invalid, then create a new mutex handle to be
-	 used for all subsequent calls */
-	pthread_mutex_t* pMutex = (pthread_mutex_t*) malloc(
-			sizeof(pthread_mutex_t));
-	if (pMutex == NULL) {
-		fprintf(stderr, "Failed to allocate mutex for logging.\n");
-		exit(ERROR);
-	}
+  /* If the global g_pLogFileMutex reference is invalid, then create a new mutex handle to be
+   used for all subsequent calls */
+  pthread_mutex_t* pMutex = (pthread_mutex_t*) malloc(
+      sizeof(pthread_mutex_t));
+  if (pMutex == NULL) {
+    fprintf(stderr, "Failed to allocate mutex for logging.\n");
+    exit(ERROR);
+  }
 
-	// Call pthread_mutex_init.  This version of CreateMutex just passes a
-	// mutex handle for the function to initialize with NULL for the attributes.
-	int nResult = pthread_mutex_init(pMutex, NULL);
-	if (OK != nResult) {
-		// Cleanup the mutex handle if necessary
-		if (pMutex != NULL) {
-			free(pMutex);
-			pMutex = NULL;
-		}
+  // Call pthread_mutex_init.  This version of CreateMutex just passes a
+  // mutex handle for the function to initialize with NULL for the attributes.
+  int nResult = pthread_mutex_init(pMutex, NULL);
+  if (OK != nResult) {
+    // Cleanup the mutex handle if necessary
+    if (pMutex != NULL) {
+      free(pMutex);
+      pMutex = NULL;
+    }
 
-		fprintf(stderr, "Failed to allocate mutex for logging.\n");
-		exit(ERROR);
-	}
+    fprintf(stderr, "Failed to allocate mutex for logging.\n");
+    exit(ERROR);
+  }
 
-	g_pLogFileMutex = pMutex;
+  g_pLogFileMutex = pMutex;
 }
 
 /**
@@ -93,40 +93,38 @@ void CreateLogFileMutexIfNotExists() {
  * @remarks This function refuses to operate if fp is NULL, or if it is stdin/stdout/stderr.
  */
 void InterlockedCloseFile(FILE* fp) {
-	CreateLogFileMutexIfNotExists();
+  CreateLogFileMutexIfNotExists();
 
-	GetLoggingMutex();
-	{
-		if (fp == NULL) {
-			ReleaseLoggingMutex();
-			return;
-		}
-		if (fp == stdout) {
-			ReleaseLoggingMutex();
-			return;
-		}
-		if (fp == stderr) {
-			ReleaseLoggingMutex();
-			return;
-		}
+  GetLoggingMutex();
+  {
+    if (fp == NULL) {
+      ReleaseLoggingMutex();
+      return;
+    }
+    if (fp == stdout) {
+      ReleaseLoggingMutex();
+      return;
+    }
+    if (fp == stderr) {
+      ReleaseLoggingMutex();
+      return;
+    }
 
-		fclose(fp);
-		fp = NULL;
-	}
-	ReleaseLoggingMutex();
+    fclose(fp);
+    fp = NULL;
+  }
+  ReleaseLoggingMutex();
 }
 
 void CloseLogFileHandles() {
-	/* Close the g_fpLog file handle, if and only if it is not
-	 * currently referencing the standard output or is a NULL value
-	 * already. */
-	InterlockedCloseFile(g_fpLog);
+  /* Close the g_fpLog file handle, if and only if it is not
+   * currently referencing the standard output or is a NULL value
+   * already. */
+  InterlockedCloseFile(g_fpLog);
 
-	/* Close the g_fpErrorLog file handle, if and only if it is not
-	 * already referencing standard error, or if it is non-NULL. */
-	InterlockedCloseFile(g_fpErrorLog);
-
-
+  /* Close the g_fpErrorLog file handle, if and only if it is not
+   * already referencing standard error, or if it is non-NULL. */
+  InterlockedCloseFile(g_fpErrorLog);
 }
 
 void DestroyLoggingMutex() {
@@ -149,263 +147,263 @@ void DestroyLoggingMutex() {
  * is only available internally to this source file.
  */
 char* GetCurrentTimeString() {
-	char* pszResult = NULL;
+  char* pszResult = NULL;
 
-	// time_t is arithmetic time type
-	time_t tNow;
+  // time_t is arithmetic time type
+  time_t tNow;
 
-	// Obtain current time
-	// time() returns the current time of the system as a time_t value
-	time(&tNow);
+  // Obtain current time
+  // time() returns the current time of the system as a time_t value
+  time(&tNow);
 
-	pszResult = (char*) malloc((TIMESTRLEN + 1) * sizeof(char));
+  pszResult = (char*) malloc((TIMESTRLEN + 1) * sizeof(char));
 
-	// Format the curernt time as a string and return it
-	//strftime(s, TIMESTRLEN, "%A, %B %d %Y ", localtime(&now));
-	strftime(pszResult, TIMESTRLEN + 1, "%c", localtime(&tNow));
+  // Format the curernt time as a string and return it
+  //strftime(s, TIMESTRLEN, "%A, %B %d %Y ", localtime(&now));
+  strftime(pszResult, TIMESTRLEN + 1, "%c", localtime(&tNow));
 
-	return pszResult;
+  return pszResult;
 }
 
 FILE* GetErrorLogFileHandle() {
-	return g_fpErrorLog;
+  return g_fpErrorLog;
 }
 
 FILE* GetLogFileHandle() {
-	return g_fpLog;
+  return g_fpLog;
 }
 
 void SetErrorLogFileHandle(FILE* fpErrorLogFile) {
-	CreateLogFileMutexIfNotExists();
+  CreateLogFileMutexIfNotExists();
 
-	if (NULL == g_pLogFileMutex) {
-		return;
-	}
+  if (NULL == g_pLogFileMutex) {
+    return;
+  }
 
-	GetLoggingMutex();
-	{
-		// Check whether the FILE pointer given to us is non-NULL;
-		// if it's NULL, then stop.
-		if (fpErrorLogFile == NULL) {
-			g_fpErrorLog = stderr;
-			return;
-		}
-		// Set the global error log file handle to the value passed.
-		// Callers are responsible for ensuring that the FILE pointer
-		// passed is a handle to a file that is currently open for
-		// reading, writing, and/or appending.
-		g_fpErrorLog = fpErrorLogFile;
-	}
-	ReleaseLoggingMutex();
+  GetLoggingMutex();
+  {
+    // Check whether the FILE pointer given to us is non-NULL;
+    // if it's NULL, then stop.
+    if (fpErrorLogFile == NULL) {
+      g_fpErrorLog = stderr;
+      return;
+    }
+    // Set the global error log file handle to the value passed.
+    // Callers are responsible for ensuring that the FILE pointer
+    // passed is a handle to a file that is currently open for
+    // reading, writing, and/or appending.
+    g_fpErrorLog = fpErrorLogFile;
+  }
+  ReleaseLoggingMutex();
 }
 
 void SetLogFileHandle(FILE* fpLogFile) {
-	CreateLogFileMutexIfNotExists();
+  CreateLogFileMutexIfNotExists();
 
-	if (NULL == g_pLogFileMutex) {
-		return;
-	}
+  if (NULL == g_pLogFileMutex) {
+    return;
+  }
 
-	GetLoggingMutex();
-	{
-		// Check whether the FILE pointer given to us is non-NULL;
-		// if it's NULL, then stop.
-		if (fpLogFile == NULL) {
-			g_fpLog = stdout;
-			return;
-		}
+  GetLoggingMutex();
+  {
+    // Check whether the FILE pointer given to us is non-NULL;
+    // if it's NULL, then stop.
+    if (fpLogFile == NULL) {
+      g_fpLog = stdout;
+      return;
+    }
 
-		// Set the global log file handle to the value passed.
-		// Callers are responsible for ensuring that the FILE pointer
-		// passed is a handle to a file that is currently open for
-		// reading, writing, and/or appending.
-		g_fpLog = fpLogFile;
-	}
-	ReleaseLoggingMutex();
+    // Set the global log file handle to the value passed.
+    // Callers are responsible for ensuring that the FILE pointer
+    // passed is a handle to a file that is currently open for
+    // reading, writing, and/or appending.
+    g_fpLog = fpLogFile;
+  }
+  ReleaseLoggingMutex();
 }
 
 void SetLogFilePath(const char* pszPath) {
-	CreateLogFileMutexIfNotExists();
+  CreateLogFileMutexIfNotExists();
 
-	if (NULL == g_pLogFileMutex) {
-		return;
-	}
+  if (NULL == g_pLogFileMutex) {
+    return;
+  }
 
-	GetLoggingMutex();
-	{
-		/* Check path to ensure it's not blank; if it is, then stop since we have
-		 nothing to do. */
-		if (pszPath == NULL || strlen(pszPath) == 0 || pszPath[0] == '\0')
-			return;
+  GetLoggingMutex();
+  {
+    /* Check path to ensure it's not blank; if it is, then stop since we have
+     nothing to do. */
+    if (pszPath == NULL || strlen(pszPath) == 0 || pszPath[0] == '\0')
+      return;
 
-		/* Attempt to open a new file for reading, writing, and appending.  Create the file
-		 if it does not already exist.  For now, we will direct all logging and error outputs
-		 to the same file. */
-		g_fpLog = g_fpErrorLog = fopen(pszPath, "a+");
-		if (g_fpLog == NULL) {
-			g_fpLog = stdout;
-			g_fpErrorLog = stderr;
-			return;
-		}
-	}
-	ReleaseLoggingMutex();
+    /* Attempt to open a new file for reading, writing, and appending.  Create the file
+     if it does not already exist.  For now, we will direct all logging and error outputs
+     to the same file. */
+    g_fpLog = g_fpErrorLog = fopen(pszPath, "a+");
+    if (g_fpLog == NULL) {
+      g_fpLog = stdout;
+      g_fpErrorLog = stderr;
+      return;
+    }
+  }
+  ReleaseLoggingMutex();
 }
 
 void ToggleDebug(BOOL bEnabled) {
-	g_bIsMute = !bEnabled;
+  g_bIsMute = !bEnabled;
 }
 
 void WriteToLog(FILE* fp, const char* pszPrefix, const char* pszBuffer) {
-	if (fp == NULL) {
-		return;
-	}
+  if (fp == NULL) {
+    return;
+  }
 
-	CreateLogFileMutexIfNotExists();
+  CreateLogFileMutexIfNotExists();
 
-	if (NULL == g_pLogFileMutex) {
-		return;
-	}
+  if (NULL == g_pLogFileMutex) {
+    return;
+  }
 
-	GetLoggingMutex();
-	{
-		if (pszPrefix == NULL || pszPrefix[0] == '\0'
-				|| strlen(pszPrefix) == 0) {
-			ReleaseLoggingMutex();
+  GetLoggingMutex();
+  {
+    if (pszPrefix == NULL || pszPrefix[0] == '\0'
+        || strlen(pszPrefix) == 0) {
+      ReleaseLoggingMutex();
 
-			return;
-		}
+      return;
+    }
 
-		if (pszBuffer == NULL || pszBuffer[0] == '\0'
-				|| strlen(pszBuffer) == 0) {
-			ReleaseLoggingMutex();
+    if (pszBuffer == NULL || pszBuffer[0] == '\0'
+        || strlen(pszBuffer) == 0) {
+      ReleaseLoggingMutex();
 
-			return;
-		}
+      return;
+    }
 
-		char* pszTimeString = GetCurrentTimeString();
+    char* pszTimeString = GetCurrentTimeString();
 
-		fprintf(fp, LOG_FORMAT, pszTimeString, pszPrefix, pszBuffer);
-		fflush(fp);
+    fprintf(fp, LOG_FORMAT, pszTimeString, pszPrefix, pszBuffer);
+    fflush(fp);
 
-		free(pszTimeString);
-		pszTimeString = NULL;
-	}
-	ReleaseLoggingMutex();
+    free(pszTimeString);
+    pszTimeString = NULL;
+  }
+  ReleaseLoggingMutex();
 }
 
 void LogInfo(const char* pszMessage, ...) {
-	if (IsNullOrWhiteSpace(pszMessage)) {
-		return;
-	}
+  if (IsNullOrWhiteSpace(pszMessage)) {
+    return;
+  }
 
-	if (g_bIsMute == TRUE)
-		return;
+  if (g_bIsMute == TRUE)
+    return;
 
-	if (GetLogFileHandle() == NULL) {
-		SetLogFileHandle(stdout);
-	}
+  if (GetLogFileHandle() == NULL) {
+    SetLogFileHandle(stdout);
+  }
 
-	va_list args;
-	va_start(args, pszMessage);
+  va_list args;
+  va_start(args, pszMessage);
 
-	char szLogLine[LOG_BUFFER_SIZE + 1];
-	memset(szLogLine, 0, LOG_BUFFER_SIZE + 1);
+  char szLogLine[LOG_BUFFER_SIZE + 1];
+  memset(szLogLine, 0, LOG_BUFFER_SIZE + 1);
 
-	vsprintf(szLogLine, pszMessage, args);
+  vsprintf(szLogLine, pszMessage, args);
 
-	char szTrimmedLogLine[LOG_BUFFER_SIZE + 1];
-	memset(szTrimmedLogLine, 0, LOG_BUFFER_SIZE + 1);
+  char szTrimmedLogLine[LOG_BUFFER_SIZE + 1];
+  memset(szTrimmedLogLine, 0, LOG_BUFFER_SIZE + 1);
 
-	Trim(szTrimmedLogLine, LOG_BUFFER_SIZE + 1, szLogLine);
+  Trim(szTrimmedLogLine, LOG_BUFFER_SIZE + 1, szLogLine);
 
-	WriteToLog(GetLogFileHandle(), INFO_MESSAGE_PREFIX, szTrimmedLogLine);
+  WriteToLog(GetLogFileHandle(), INFO_MESSAGE_PREFIX, szTrimmedLogLine);
 
-	va_end(args);
+  va_end(args);
 }
 
 void LogWarning(const char* pszMessage, ...) {
-	if (IsNullOrWhiteSpace(pszMessage)) {
-		return;
-	}
+  if (IsNullOrWhiteSpace(pszMessage)) {
+    return;
+  }
 
-	if (g_bIsMute == TRUE)
-		return;
+  if (g_bIsMute == TRUE)
+    return;
 
-	if (GetLogFileHandle() == NULL)
-		SetLogFileHandle(stdout);
+  if (GetLogFileHandle() == NULL)
+    SetLogFileHandle(stdout);
 
-	va_list args;
-	va_start(args, pszMessage);
+  va_list args;
+  va_start(args, pszMessage);
 
-	char szLogLine[LOG_BUFFER_SIZE + 1];
-	memset(szLogLine, 0, LOG_BUFFER_SIZE + 1);
+  char szLogLine[LOG_BUFFER_SIZE + 1];
+  memset(szLogLine, 0, LOG_BUFFER_SIZE + 1);
 
-	vsprintf(szLogLine, pszMessage, args);
+  vsprintf(szLogLine, pszMessage, args);
 
-	char szTrimmedLogLine[LOG_BUFFER_SIZE + 1];
-	memset(szTrimmedLogLine, 0, LOG_BUFFER_SIZE + 1);
+  char szTrimmedLogLine[LOG_BUFFER_SIZE + 1];
+  memset(szTrimmedLogLine, 0, LOG_BUFFER_SIZE + 1);
 
-	Trim(szTrimmedLogLine, LOG_BUFFER_SIZE + 1, szLogLine);
+  Trim(szTrimmedLogLine, LOG_BUFFER_SIZE + 1, szLogLine);
 
-	WriteToLog(GetLogFileHandle(), WARN_MESSAGE_PREFIX, szTrimmedLogLine);
+  WriteToLog(GetLogFileHandle(), WARN_MESSAGE_PREFIX, szTrimmedLogLine);
 
-	va_end(args);
+  va_end(args);
 }
 
 void LogError(const char* pszMessage, ...) {
-	if (IsNullOrWhiteSpace(pszMessage)) {
-		return;
-	}
+  if (IsNullOrWhiteSpace(pszMessage)) {
+    return;
+  }
 
-	if (g_bIsMute == TRUE)
-		return;
+  if (g_bIsMute == TRUE)
+    return;
 
-	if (GetErrorLogFileHandle() == NULL)
-		SetErrorLogFileHandle(stderr);
+  if (GetErrorLogFileHandle() == NULL)
+    SetErrorLogFileHandle(stderr);
 
-	va_list args;
-	va_start(args, pszMessage);
+  va_list args;
+  va_start(args, pszMessage);
 
-	char szLogLine[LOG_BUFFER_SIZE + 1];
-	memset(szLogLine, 0, LOG_BUFFER_SIZE + 1);
+  char szLogLine[LOG_BUFFER_SIZE + 1];
+  memset(szLogLine, 0, LOG_BUFFER_SIZE + 1);
 
-	vsprintf(szLogLine, pszMessage, args);
+  vsprintf(szLogLine, pszMessage, args);
 
-	char szTrimmedLogLine[LOG_BUFFER_SIZE + 1];
-	memset(szTrimmedLogLine, 0, LOG_BUFFER_SIZE + 1);
+  char szTrimmedLogLine[LOG_BUFFER_SIZE + 1];
+  memset(szTrimmedLogLine, 0, LOG_BUFFER_SIZE + 1);
 
-	Trim(szTrimmedLogLine, LOG_BUFFER_SIZE + 1, szLogLine);
+  Trim(szTrimmedLogLine, LOG_BUFFER_SIZE + 1, szLogLine);
 
-	WriteToLog(GetErrorLogFileHandle(), ERROR_MESSAGE_PREFIX, szTrimmedLogLine);
+  WriteToLog(GetErrorLogFileHandle(), ERROR_MESSAGE_PREFIX, szTrimmedLogLine);
 
-	va_end(args);
+  va_end(args);
 }
 
 void LogDebug(const char* pszMessage, ...) {
-	if (IsNullOrWhiteSpace(pszMessage)) {
-		return;
-	}
+  if (IsNullOrWhiteSpace(pszMessage)) {
+    return;
+  }
 
-	if (g_bIsMute == TRUE)
-		return;
+  if (g_bIsMute == TRUE)
+    return;
 
-	if (GetLogFileHandle() == NULL)
-		SetLogFileHandle(stdout);
+  if (GetLogFileHandle() == NULL)
+    SetLogFileHandle(stdout);
 
-	va_list args;
-	va_start(args, pszMessage);
+  va_list args;
+  va_start(args, pszMessage);
 
-	char szLogLine[LOG_BUFFER_SIZE + 1];
-	memset(szLogLine, 0, LOG_BUFFER_SIZE + 1);
+  char szLogLine[LOG_BUFFER_SIZE + 1];
+  memset(szLogLine, 0, LOG_BUFFER_SIZE + 1);
 
-	vsprintf(szLogLine, pszMessage, args);
+  vsprintf(szLogLine, pszMessage, args);
 
-	char szTrimmedLogLine[LOG_BUFFER_SIZE + 1];
-	memset(szTrimmedLogLine, 0, LOG_BUFFER_SIZE + 1);
+  char szTrimmedLogLine[LOG_BUFFER_SIZE + 1];
+  memset(szTrimmedLogLine, 0, LOG_BUFFER_SIZE + 1);
 
-	Trim(szTrimmedLogLine, LOG_BUFFER_SIZE + 1, szLogLine);
+  Trim(szTrimmedLogLine, LOG_BUFFER_SIZE + 1, szLogLine);
 
-	WriteToLog(GetLogFileHandle(), DEBUG_MESSAGE_PREFIX, szTrimmedLogLine);
+  WriteToLog(GetLogFileHandle(), DEBUG_MESSAGE_PREFIX, szTrimmedLogLine);
 
-	va_end(args);
+  va_end(args);
 }
