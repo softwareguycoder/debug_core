@@ -88,9 +88,13 @@ void CreateLogFileMutexIfNotExists() {
 }
 
 /**
- * @brief Obtains a lock on the file mutex before performing the operation of closing the file handle.
- * @param fp FILE pointer providing a handle to the file to be closed.
- * @remarks This function refuses to operate if fp is NULL, or if it is stdin/stdout/stderr.
+ * @brief Obtains a lock on the file mutex before performing the operation of
+ * closing the file handle.  Sets the file handle to NULL afterwards.
+ * @param fpp Address of a FILE pointer providing a handle to the
+ * file to be closed.  This function resets the pointer's value to NULL
+ * after execution.
+ * @remarks This function refuses to operate if fp is NULL, or if it is
+ * stdin/stdout/stderr.
  */
 void InterlockedCloseFile(FILE** fpp) {
   CreateLogFileMutexIfNotExists();
@@ -101,10 +105,12 @@ void InterlockedCloseFile(FILE** fpp) {
       ReleaseLoggingMutex();
       return;
     }
+
     if (*fpp == stdout) {
       ReleaseLoggingMutex();
       return;
     }
+
     if (*fpp == stderr) {
       ReleaseLoggingMutex();
       return;

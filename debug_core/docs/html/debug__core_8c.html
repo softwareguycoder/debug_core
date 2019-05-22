@@ -103,7 +103,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:a076eaba83cee7b8770686ddc37f3a81b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the global hLogFileMutex handle has a valid value; if not, re-initializes it.  <a href="#a076eaba83cee7b8770686ddc37f3a81b">More...</a><br /></td></tr>
 <tr class="separator:a076eaba83cee7b8770686ddc37f3a81b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad28b328097614816d54ef7caf2fa3aeb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8c.html#ad28b328097614816d54ef7caf2fa3aeb">InterlockedCloseFile</a> (FILE **fpp)</td></tr>
-<tr class="memdesc:ad28b328097614816d54ef7caf2fa3aeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtains a lock on the file mutex before performing the operation of closing the file handle.  <a href="#ad28b328097614816d54ef7caf2fa3aeb">More...</a><br /></td></tr>
+<tr class="memdesc:ad28b328097614816d54ef7caf2fa3aeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtains a lock on the file mutex before performing the operation of closing the file handle. Sets the file handle to NULL afterwards.  <a href="#ad28b328097614816d54ef7caf2fa3aeb">More...</a><br /></td></tr>
 <tr class="separator:ad28b328097614816d54ef7caf2fa3aeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c1a9be8c6e43bbb0a09b493d1d46d86"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="debug__core_8c.html#a8c1a9be8c6e43bbb0a09b493d1d46d86">CloseLogFileHandles</a> ()</td></tr>
 <tr class="separator:a8c1a9be8c6e43bbb0a09b493d1d46d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -214,7 +214,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00119">119</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00125">125</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -254,7 +254,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00134">134</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00140">140</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -273,7 +273,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00153">153</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00159">159</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -292,7 +292,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00172">172</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00178">178</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -311,7 +311,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00176">176</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00182">182</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -350,16 +350,16 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Obtains a lock on the file mutex before performing the operation of closing the file handle. </p>
+<p>Obtains a lock on the file mutex before performing the operation of closing the file handle. Sets the file handle to NULL afterwards. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">fp</td><td>FILE pointer providing a handle to the file to be closed. </td></tr>
+    <tr><td class="paramname">fpp</td><td>Address of a FILE pointer providing a handle to the file to be closed. This function resets the pointer's value to NULL after execution. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section remark"><dt>Remarks</dt><dd>This function refuses to operate if fp is NULL, or if it is stdin/stdout/stderr. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00095">95</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00099">99</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -389,7 +389,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00386">386</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00392">392</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -419,7 +419,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00357">357</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00363">363</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -449,7 +449,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00298">298</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00304">304</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -479,7 +479,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00328">328</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00334">334</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -518,7 +518,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00180">180</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00186">186</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -538,7 +538,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00204">204</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00210">210</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -558,7 +558,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00229">229</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00235">235</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -578,7 +578,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00256">256</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00262">262</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
@@ -614,7 +614,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00260">260</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="debug__core_8c_source.html#l00266">266</a> of file <a class="el" href="debug__core_8c_source.html">debug_core.c</a>.</p>
 
 </div>
 </div>
