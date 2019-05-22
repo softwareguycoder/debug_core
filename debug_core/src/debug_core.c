@@ -92,26 +92,26 @@ void CreateLogFileMutexIfNotExists() {
  * @param fp FILE pointer providing a handle to the file to be closed.
  * @remarks This function refuses to operate if fp is NULL, or if it is stdin/stdout/stderr.
  */
-void InterlockedCloseFile(FILE* fp) {
+void InterlockedCloseFile(FILE** fpp) {
   CreateLogFileMutexIfNotExists();
 
   GetLoggingMutex();
   {
-    if (fp == NULL) {
+    if (fpp == NULL || *fpp == NULL) {
       ReleaseLoggingMutex();
       return;
     }
-    if (fp == stdout) {
+    if (*fpp == stdout) {
       ReleaseLoggingMutex();
       return;
     }
-    if (fp == stderr) {
+    if (*fpp == stderr) {
       ReleaseLoggingMutex();
       return;
     }
 
-    fclose(fp);
-    fp = NULL;
+    fclose(*fpp);
+    *fpp = NULL;
   }
   ReleaseLoggingMutex();
 }
@@ -120,11 +120,15 @@ void CloseLogFileHandles() {
   /* Close the g_fpLog file handle, if and only if it is not
    * currently referencing the standard output or is a NULL value
    * already. */
-  InterlockedCloseFile(g_fpLog);
+  if (g_fpLog != NULL && g_fpLog != stdout) {
+    InterlockedCloseFile(&g_fpLog);
+  }
 
   /* Close the g_fpErrorLog file handle, if and only if it is not
    * already referencing standard error, or if it is non-NULL. */
-  InterlockedCloseFile(g_fpErrorLog);
+  if (g_fpErrorLog != NULL && g_fpErrorLog != stderr) {
+    InterlockedCloseFile(&g_fpErrorLog);
+  }
 }
 
 void DestroyLoggingMutex() {
