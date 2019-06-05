@@ -1,0 +1,6 @@
+/Debug
+/Release
+.project
+.classpath
+.settings/
+language.settings.xml
