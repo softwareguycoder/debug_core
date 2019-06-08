@@ -33,4 +33,6 @@ digraph "/home/bhart/git/debug_core/debug_core/include/stdafx.h"
   Node14 [label="limits.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
   Node0 -> Node15 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node15 [label="../../api_core/api\l_core/include/api_core.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node0 -> Node16 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node16 [label="../../exceptions_core\l/exceptions_core/include\l/exceptions_core.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
 }
