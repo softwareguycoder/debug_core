@@ -276,15 +276,13 @@ void WriteToLog(FILE* fp, const char* pszPrefix, const char* pszBuffer) {
 
   GetLoggingMutex();
   {
-    if (pszPrefix == NULL || pszPrefix[0] == '\0'
-        || strlen(pszPrefix) == 0) {
+    if (IsNullOrWhiteSpace(pszPrefix)) {
       ReleaseLoggingMutex();
 
       return;
     }
 
-    if (pszBuffer == NULL || pszBuffer[0] == '\0'
-        || strlen(pszBuffer) == 0) {
+    if (IsNullOrWhiteSpace(pszBuffer)) {
       ReleaseLoggingMutex();
 
       return;
@@ -319,7 +317,9 @@ void LogInfo(const char* pszMessage, ...) {
   char szLogLine[LOG_BUFFER_SIZE + 1];
   memset(szLogLine, 0, LOG_BUFFER_SIZE + 1);
 
-  vsprintf(szLogLine, pszMessage, args);
+  /* We use vsnprintf to assure that very long formatted output
+   * is truncated so that it will not overflow the szLogLine buffer */
+  vsnprintf(szLogLine, LOG_BUFFER_SIZE + 1, pszMessage, args);
 
   char szTrimmedLogLine[LOG_BUFFER_SIZE + 1];
   memset(szTrimmedLogLine, 0, LOG_BUFFER_SIZE + 1);
@@ -348,7 +348,9 @@ void LogWarning(const char* pszMessage, ...) {
   char szLogLine[LOG_BUFFER_SIZE + 1];
   memset(szLogLine, 0, LOG_BUFFER_SIZE + 1);
 
-  vsprintf(szLogLine, pszMessage, args);
+  /* We use vsnprintf to assure that very long formatted output
+   * is truncated so that it will not overflow the szLogLine buffer */
+  vsnprintf(szLogLine, LOG_BUFFER_SIZE + 1, pszMessage, args);
 
   char szTrimmedLogLine[LOG_BUFFER_SIZE + 1];
   memset(szTrimmedLogLine, 0, LOG_BUFFER_SIZE + 1);
@@ -377,7 +379,9 @@ void LogError(const char* pszMessage, ...) {
   char szLogLine[LOG_BUFFER_SIZE + 1];
   memset(szLogLine, 0, LOG_BUFFER_SIZE + 1);
 
-  vsprintf(szLogLine, pszMessage, args);
+  /* We use vsnprintf to assure that very long formatted output
+   * is truncated so that it will not overflow the szLogLine buffer */
+  vsnprintf(szLogLine, LOG_BUFFER_SIZE + 1, pszMessage, args);
 
   char szTrimmedLogLine[LOG_BUFFER_SIZE + 1];
   memset(szTrimmedLogLine, 0, LOG_BUFFER_SIZE + 1);
@@ -406,7 +410,9 @@ void LogDebug(const char* pszMessage, ...) {
   char szLogLine[LOG_BUFFER_SIZE + 1];
   memset(szLogLine, 0, LOG_BUFFER_SIZE + 1);
 
-  vsprintf(szLogLine, pszMessage, args);
+  /* We use vsnprintf to assure that very long formatted output
+   * is truncated so that it will not overflow the szLogLine buffer */
+  vsnprintf(szLogLine, LOG_BUFFER_SIZE + 1, pszMessage, args);
 
   char szTrimmedLogLine[LOG_BUFFER_SIZE + 1];
   memset(szTrimmedLogLine, 0, LOG_BUFFER_SIZE + 1);
